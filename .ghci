@@ -1,0 +1,50 @@
+:set -XPackageImports
+
+import Control.Applicative
+import Control.Monad hiding (forM , forM_ , mapM , mapM_ , msum , sequence , sequence_)
+import Data.Bool
+import Data.Either
+import Data.Foldable
+import Data.Function
+import Data.Maybe
+import Data.Monoid
+import Data.String
+import Data.Traversable
+import Data.Tuple
+import Data.Eq
+import Data.Ord
+import Data.Int
+import qualified IPPrint
+import qualified Language.Haskell.HsColour as HsColour
+import qualified Language.Haskell.HsColour.Colourise as HsColour
+import qualified Language.Haskell.HsColour.Output as HsColour
+
+let myColourPrefs = HsColour.defaultColourPrefs { HsColour.conid = [HsColour.Foreground HsColour.Yellow, HsColour.Bold], HsColour.conop = [HsColour.Foreground HsColour.Yellow], HsColour.string = [HsColour.Foreground HsColour.Green], HsColour.char = [HsColour.Foreground HsColour.Cyan], HsColour.number = [HsColour.Foreground HsColour.Red, HsColour.Bold], HsColour.layout = [HsColour.Foreground HsColour.White], HsColour.keyglyph = [HsColour.Foreground HsColour.White] }
+
+let myPrint = putStrLn . HsColour.hscolour (HsColour.TTYg HsColour.XTerm256Compatible) myColourPrefs False False "" False . IPPrint.pshow
+
+:set -interactive-print=myPrint
+
+let if' p x y = if p then x else y
+
+:def hlint const . return $ ":! hlint \"src\""
+:def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
+:def pl \s -> return $ ":! pointfree \"" ++ s ++ "\""
+:def clear const . return $ ":! clear"
+
+-- show types
+:set +t
+
+-- Surround a string in single quotes.
+let single_quote s = concat ["'", s, "'"]
+
+-- Escape a single quote in the shell. (This mess actually works.)
+let escape_single_quote c = if c == '\'' then "'\"'\"'" else [c]
+
+-- Simple heuristic to escape shell command arguments.
+let simple_shell_escape = single_quote . (concatMap escape_single_quote)
+
+:def hoogle \x -> return $ ":!hoogle --color " ++ (simple_shell_escape x)
+:def doc \x -> return $ ":!hoogle --info --color " ++ (simple_shell_escape x)
+
+:set prompt "\ESC[32m\STX λ \ESC[m\STX"
