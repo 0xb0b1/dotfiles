@@ -1,0 +1,3 @@
+#!/bin/sh
+
+maim -s | convert - \( +clone \) +swap -layers merge +repage $HOME/Images/print.jpg

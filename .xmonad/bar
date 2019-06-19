@@ -1,0 +1,19 @@
+conky.config = {
+    background = false,
+    out_to_console = true,
+    out_to_x = false,
+    update_interval = 1,
+    total_run_times = 0,
+    use_spacer = 'none',
+
+};
+
+conky.text = [=[
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/net_up_02.xbm)^fg()  ${upspeedf eth0} \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/net_down_02.xbm)^fg()  ${downspeedf eth0}   \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/mem.xbm)^fg()  ${exec free -m | awk '/Mem/ {print $3, "Mib"}'  }  \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/cpu.xbm)^fg()  ${exec cat /proc/loadavg | awk 'BEGIN {sum=0.0f} {sum+=$1} END {print sum}' }  \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/phones.xbm)^fg()  ${exec  amixer | awk 'NR==5{gsub(/[[:punct:]]/,""); print $4}' }  \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/bat_full_01.xbm)^fg()  ${exec acpi -b | cut -d '%' -f1 | awk '{print $4}' } \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/clock1.xbm)^fg() ^ca()  ${exec date | awk '{print $4"  "$1" "$2" "$3 }'}   \
+]=];
