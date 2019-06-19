@@ -1,0 +1,71 @@
+# Colors!
+set     red="%{\033[1;31m%}"
+set   green="%{\033[0;32m%}"
+set  yellow="%{\033[1;33m%}"
+set    blue="%{\033[1;34m%}"
+set magenta="%{\033[1;35m%}"
+set    cyan="%{\033[1;36m%}"
+set   white="%{\033[0;37m%}"
+set     end="%{\033[0m%}" # This is needed at the end... :(
+
+set prompt="${blue}%m ${white}%~ ${green}%%${end} "
+
+# Clean up after ourselves...
+unset red green yellow blue magenta cyan yellow white end
+
+alias ls ls -AF --color=auto
+alias grep grep --colour=auto
+alias egrep egrep --colour=auto
+alias fgrep fgrep --colour=auto
+alias h     history 25
+alias j     jobs -l
+alias l     less -W
+alias t8    telnet -8L
+alias c     clear
+alias git-svn   git svn
+alias dx    du -hd 0 .
+alias alsamixer alsamixer -g
+alias gprof gprof --brief
+
+# A righteous umask
+#umask 66
+umask 22
+
+# XWindow name
+setenv WMNAME XMonad
+
+#set path = (/sbin /bin /usr/sbin /usr/bin /usr/games /usr/local/sbin /usr/local/bin $HOME/bin)
+setenv PATH	$HOME"/bin":$PATH
+
+setenv  EDITOR  vim
+setenv  PAGER   less
+setenv  BLOCKSIZE   K
+setenv  LC_ALL  en_GB.UTF-8
+setenv  LANG    en_GB.UTF-8
+setenv  LSCOLORS    ExFxCxDxBxEgEdAbAgAcAd
+
+# tin setting
+setenv  TINRC   '-r'
+setenv  TIN_HOMEDIR	~/.config
+
+complete sudo 'p/1/c/'
+complete man 'p/1/c/'
+complete which 'p/1/c/'
+
+set histfile="~/.history"
+set filec
+set history = 5000
+set savehist = (5000 merge)
+
+bindkey "^W" backward-delete-word
+bindkey -k up history-search-backward
+bindkey -k down history-search-forward
+
+#colorful man
+setenv LESS_TERMCAP_mb '[38;5;239m'   # begin blinking
+setenv LESS_TERMCAP_md '[38;5;231m'   # begin bold
+setenv LESS_TERMCAP_me '[38;5;244m'   # end mode
+setenv LESS_TERMCAP_so '[38;5;241m'   # begin standout-mode - info box
+setenv LESS_TERMCAP_se '[38;5;244m'   # end standout-mode
+setenv LESS_TERMCAP_us '[38;5;247m'   # begin underline
+setenv LESS_TERMCAP_ue '[0m'   # end underline
