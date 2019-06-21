@@ -33,12 +33,12 @@ wIcons1 = " ^i(/home/b0b1/.xmonad/icons/)"
 -- WORKSPACES   [0-5]
 myWorkspaces :: [String]
 myWorkspaces    = [
-                    "^i(/home/b0b1/.xmonad/icons/term.xbm) TERM"++wIcons1++""            -- index 0
-                    , "^i(/home/b0b1/.xmonad/icons/www.xbm) WEB"++wIcons1++""            -- index 1
-                    , "^i(/home/b0b1/.xmonad/icons/code.xbm) CODE"++wIcons1++""          -- index 2
-                    , "^i(/home/b0b1/.xmonad/icons/messenger2.xbm) CHAT"++wIcons1++""    -- index 3
-                    , "^i(/home/b0b1/.xmonad/icons/play.xbm) MEDIA"++wIcons1++""         -- index 4
-                    , "^i(/home/b0b1/.xmonad/icons/docs.xbm) DOCS"++wIcons1++""          -- index 5
+                    "TERM"       -- index 0
+                    , "WEB"      -- index 1
+                    , "CODE"     -- index 2
+                    , "CHAT"     -- index 3
+                    , "MEDIA"    -- index 4
+                    , "DOCS"     -- index 5
                     ]
 
 -- LAYOUT ICONS
