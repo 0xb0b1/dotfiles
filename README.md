@@ -2,9 +2,13 @@
 dotfiles
 
 *OS*: Funtoo Linux
+
 *WM*: XMonad
+
 *BAR*: dzen+conky
+
 *SHELL*: tcsh
+
 *TERMINAL*: xst
 
 
