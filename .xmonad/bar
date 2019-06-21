@@ -5,15 +5,14 @@ conky.config = {
     update_interval = 1,
     total_run_times = 0,
     use_spacer = 'none',
-
 };
 
 conky.text = [=[
 ^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/net_up_02.xbm)^fg()  ${upspeedf eth0} \
 ^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/net_down_02.xbm)^fg()  ${downspeedf eth0}   \
-^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/mem.xbm)^fg()  ${exec free -m | awk '/Mem/ {print $3, "Mib"}'  }  \
-^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/cpu.xbm)^fg()  ${exec cat /proc/loadavg | awk '{print sum}' }  \
-^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/phones.xbm)^fg()  ${exec  amixer | awk 'NR==5{gsub(/[[:punct:]]/,""); print $4}' }  \
-^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/bat_full_01.xbm)^fg()  ${exec acpi -b | cut -d '%' -f1 | awk '{print $4}' } \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/cpu.xbm)^fg()  ${exec awk '{print $1}' /proc/loadavg }  \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/mem.xbm)^fg()  ${exec awk '/MemTotal/ {t=$2} /MemFree/ {f=$2} /^Cached/ {c=$2} END {print t-f-c " " t;}' /proc/meminfo | gdbar -h 10 -w 50 -fg '#FFFFFF' -bg '#515151' -ss 0 -sw 3 -nonl -s o -max 101 }  \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/phones.xbm)^fg()  ${exec  amixer | awk 'NR==5{gsub(/[[:punct:]]/,""); print $4}' | gdbar -h 10 -w 50 -fg  '#FFFFFF' -bg  '#515151' -ss 0 -sw 3  -nonl -s o -max 101}  \
+^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/bat_full_01.xbm)^fg()  ${exec acpi -b | cut -d '%' -f1 | awk 'BEGIN {sum=0.0f} {sum+=$4} END {print sum}' | gdbar -h 10 -w 50 -fg '#FFFFFF' -bg '#515151' -ss 0 -sw 3 -nonl -s o -max}  \
 ^fg(\#FFFFFF) ^i($HOME/.xmonad/icons/clock1.xbm)^fg() ^ca()  ${exec date | awk '{print $4"  "$1" "$2" "$3 }'}   \
 ]=];
