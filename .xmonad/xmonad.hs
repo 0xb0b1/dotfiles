@@ -30,7 +30,7 @@ import XMonad.Actions.GridSelect (GSConfig(..), goToSelected, bringSelected, col
 wIcons = "/home/b0b1/.xmonad/icons/"
 wIcons1 = " ^i(/home/b0b1/.xmonad/icons/)"
 
--- WORKSPACES   [0-6]
+-- WORKSPACES   [0-5]
 myWorkspaces :: [String]
 myWorkspaces    = [
                     "^i(/home/b0b1/.xmonad/icons/term.xbm) TERM"++wIcons1++""            -- index 0
