@@ -1,15 +1,15 @@
 # ![alt text](https://github.com/0xM4N/dotfiles/blob/master/dotfiles.jpg)
 
 
-*OS*: Funtoo Linux
+**OS**: Funtoo Linux
 
-*WM*: XMonad
+**WM**: XMonad
 
-*BAR*: dzen+conky
+**BAR**: dzen+conky
 
-*SHELL*: tcsh
+**SHELL**: tcsh
 
-*TERMINAL*: xst
+**TERMINAL**: xst
 
 
 ![alt text](https://github.com/0xM4N/dotfiles/blob/master/print.jpg)
