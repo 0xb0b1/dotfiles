@@ -1,5 +1,5 @@
-# dotfiles
-dotfiles
+# ![alt text](https://github.com/0xM4N/dotfiles/blob/master/dotfiles.jpg)
+
 
 *OS*: Funtoo Linux
 
