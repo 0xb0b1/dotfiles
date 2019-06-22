@@ -164,7 +164,7 @@ myStartupHook = do
     spawn "xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'"
 
 -- STATUS BAR
-myRightBar  = "sleep 1;conky -c $HOME/.xmonad/scripts/bar | dzen2 -p -ta r -fn 'Exo 2:size=10' -fg '#FFFFFF' -bg '#111111' -x 850 -h 30 -y 4 -w 512"
+myRightBar  = "sleep 1;conky -c $HOME/.xmonad/bar | dzen2 -p -ta r -fn 'Exo 2:size=10' -fg '#FFFFFF' -bg '#111111' -x 850 -h 30 -y 4 -w 512"
 myLeftBar   = "sleep 1;dzen2 -p -ta l -fn 'Exo 2:size=10' -fg '#FFFFFF' -bg '#111111' -h 30 -x 4 -y 4 -w 860"
 
 -- CONFIG
