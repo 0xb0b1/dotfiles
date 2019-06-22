@@ -81,6 +81,7 @@ gridConfig colorizer    = (buildDefaultGSConfig greyColorizer)
     { gs_cellheight     = 65
     , gs_cellwidth      = 150
     , gs_cellpadding    = 20
+    , gs_font           = "xft:Exo 2:size=8" -- finally, urgh
     }
 
 -- LAYOUTS
