@@ -68,8 +68,8 @@ wColor handle = def
 
 -- GRID SELECTOR COLOURS
 greyColorizer = colorRangeFromClassName
-    (0x18,0x15,0x12) -- lowest inactive bg
-    (0x18,0x15,0x12) -- highest inactive bg
+    black            -- lowest inactive bg
+    black            -- highest inactive bg
     white            -- active bg
     white            -- inactive fg
     black            -- active fg
