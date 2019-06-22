@@ -8,7 +8,6 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys, additionalMouseBindings)
 
 import XMonad.Layout.Gaps
-import XMonad.Layout.Grid
 import XMonad.Layout.Circle
 import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
