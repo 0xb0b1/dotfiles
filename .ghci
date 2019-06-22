@@ -35,6 +35,9 @@ let if' p x y = if p then x else y
 -- show types
 :set +t
 
+-- show all warnings
+:set -Wall
+
 -- Surround a string in single quotes.
 let single_quote s = concat ["'", s, "'"]
 
