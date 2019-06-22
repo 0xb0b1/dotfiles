@@ -67,15 +67,17 @@ wColor handle = def
         }
 
 -- GRID SELECTOR COLOURS
-myGridConfig = colorRangeFromClassName
+greyColorizer = colorRangeFromClassName
     (0x18,0x15,0x12) -- lowest inactive bg
     (0x18,0x15,0x12) -- highest inactive bg
-    (0x99,0x99,0x99) -- active bg
-    (0x98,0x95,0x84) -- inactive fg
-    (0x01,0x01,0x01) -- active fg
+    white            -- active bg
+    white            -- inactive fg
+    black            -- active fg
+  where white = maxBound
+        black = minBound
 
--- GSconfig color
-myGSConfig colorizer    = (buildDefaultGSConfig myGridConfig)
+-- GRID CONFIG
+gridConfig colorizer    = (buildDefaultGSConfig greyColorizer)
     { gs_cellheight     = 65
     , gs_cellwidth      = 150
     , gs_cellpadding    = 20
@@ -98,8 +100,8 @@ myKeys = [
     , ((mod4Mask, xK_d), spawn  "dmenu_run -b -i -l 3 -p 'MENU: ' -fn 'Exo 2:size=12' -nb '#111111' -nf '#FFFFFF' -sb '#FFFFFF' -sf '#111111' ")
 
 -- GRID
-    , ((mod4Mask, xK_m), goToSelected $ myGSConfig myGridConfig)
-    , ((mod4Mask .|. shiftMask, xK_m), bringSelected $ myGSConfig myGridConfig)
+    , ((mod4Mask, xK_m), goToSelected $ gridConfig greyColorizer)
+    , ((mod4Mask .|. shiftMask, xK_m), bringSelected $ gridConfig greyColorizer)
 
 -- MOVING FLOATING WINDOWS
     , ((mod4Mask, xK_Up), sendMessage (MoveUp 10))
