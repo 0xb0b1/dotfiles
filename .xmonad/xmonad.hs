@@ -22,8 +22,8 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts)
 
 import XMonad.Actions.WithAll
+import XMonad.Actions.GridSelect
 import qualified XMonad.Actions.ConstrainedResize as Sqr
-import XMonad.Actions.GridSelect (GSConfig(..), goToSelected, bringSelected, colorRangeFromClassName, buildDefaultGSConfig)
 
 -- ICONS PATH
 wIcons = "/home/b0b1/.xmonad/icons/"
