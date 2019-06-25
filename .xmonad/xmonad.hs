@@ -32,12 +32,12 @@ wIcons1 = " ^i(/home/b0b1/.xmonad/icons/)"
 -- WORKSPACES   [0-5]
 myWorkspaces :: [String]
 myWorkspaces    = [
-                    "TERM"       -- index 0
-                    , "WEB"      -- index 1
-                    , "CODE"     -- index 2
-                    , "CHAT"     -- index 3
-                    , "MEDIA"    -- index 4
-                    , "DOCS"     -- index 5
+                    "ONE"       -- index 0
+                    , "TWO"      -- index 1
+                    , "THREE"     -- index 2
+                    , "FOUR"     -- index 3
+                    , "FIVE"    -- index 4
+                    , "SIX"     -- index 5
                     ]
 
 -- LAYOUT ICONS
@@ -94,7 +94,7 @@ myLayout = (gaps [(U, 36), (R, 2), (L, 2), (D, 2)] $ avoidStruts $ smartBorders 
 -- KEYBINGS
 myKeys = [
   -- APPS
-    ((mod4Mask, xK_Return), spawn "xst")
+    ((mod4Mask, xK_Return), spawn "xst -e tmux")
     , ((mod4Mask, xK_a), spawn "qutebrowser")
     , ((mod4Mask, xK_p), spawn "xst -e ranger")
     , ((mod4Mask, xK_t), spawn "$HOME/Telegram/Telegram")
@@ -161,7 +161,7 @@ myApps = composeAll
 -- AUTOSTART
 myStartupHook :: X()
 myStartupHook = do
-    spawn "hsetroot -fill $HOME/Images/daft.jpg"
+    spawn "hsetroot -fill $HOME/Images/wallpaper.jpg"
     spawn "xsetroot -cursor_name left_ptr &"
     spawn "xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'"
 
