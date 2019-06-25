@@ -13,4 +13,5 @@
 
 
 
-![alt text](https://github.com/0xM4N/dotfiles/Images/blob/master/print.jpg)
+![alt text](https://github.com/0xM4N/dotfiles/blob/master/Images/print.jpg)
+
