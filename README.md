@@ -9,9 +9,9 @@
 
 **SHELL**: tcsh
 
-**TERMINAL**: xst
+**TERMINAL**: xst + tmux
 
 
 
-![alt text](https://github.com/0xM4N/dotfiles/blob/master/Images/print.jpg)
+# ![alt text](https://github.com/0xM4N/dotfiles/blob/master/Images/print.jpg)
 
