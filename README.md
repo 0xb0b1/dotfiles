@@ -11,6 +11,7 @@
 
 **TERMINAL**: xst + tmux
 
+# https://github.com/gpakosz/.tmux
 
 
 # ![alt text](https://github.com/0xM4N/dotfiles/blob/master/Images/print.jpg)
