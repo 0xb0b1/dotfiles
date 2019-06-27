@@ -22,7 +22,7 @@ import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.ManageDocks (manageDocks)
+import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts)
 
 import XMonad.Actions.WithAll
 import XMonad.Actions.GridSelect
@@ -87,7 +87,7 @@ gridConfig colorizer    = (buildDefaultGSConfig greyColorizer)
     }
 
 -- LAYOUTS
-myLayout = gaps [(U, 32), (R, 1), (L, 1), (D, 1)] $ smartBorders (resizable ||| Circle ||| float) ||| full
+myLayout = gaps [(U, 32), (R, 1), (L, 1), (D, 1)] $ avoidStruts $ smartBorders (resizable ||| Circle ||| float) ||| full
   where
     float       = simplestFloat
     full        = noBorders (fullscreenFull Full)
