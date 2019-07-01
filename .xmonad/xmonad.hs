@@ -87,7 +87,7 @@ gridConfig colorizer    = (buildDefaultGSConfig greyColorizer)
     }
 
 -- LAYOUTS
-myLayout = gaps [(U, 32), (R, 1), (L, 1), (D, 1)] $ avoidStruts $ smartBorders (resizable ||| Circle ||| float) ||| full
+myLayout = gaps [(U, 32), (R, 1), (L, 1), (D, 1)] (avoidStruts $ smartBorders (resizable ||| Circle ||| float)) ||| full
   where
     float       = simplestFloat
     full        = noBorders (fullscreenFull Full)
