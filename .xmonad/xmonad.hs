@@ -29,7 +29,7 @@ import qualified XMonad.Actions.ConstrainedResize as Sqr
 wIcons = "/home/b0b1/.xmonad/icons/"
 wIcons1 = " ^i(/home/b0b1/.xmonad/icons/)"
 
--- WORKSPACES   [0-6]
+-- WORKSPACES   [0-5]
 myWorkspaces :: [String]
 myWorkspaces = [
                "ONE"       -- index 0
