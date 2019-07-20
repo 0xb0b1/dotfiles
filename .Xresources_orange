@@ -1,0 +1,88 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!! ST TERMINAL CONFIGURATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! These are all possible options, presented with default values.
+! xst will fallback to *.option if st.option is not present.
+! see src/config.h for more information about option meanings.
+
+! These options only take effect on startup.
+st.termname:     st-256color
+! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
+st.shell:        /bin/tcsh
+
+! The following options options can be reloaded via USR1 signal.
+st.font:              Monaco:pixelsize=12:antialias=true:autohint=true;
+st.borderpx:          10
+! Available cursor values: 2 4 6 7 = █ _ | ☃ ( 1 3 5 are blinking versions)
+st.cursorshape:       4
+! thickness of underline and bar cursors
+st.cursorthickness:   2
+! 0: normal blinking, 1: leave cursor border and blink with cursors background
+
+st.cursorblinkstyle:  2
+! 0: cursor blinks with a constant interval; 1: blinking cycle resets on key input
+st.cursorblinkontype: 1
+st.bold_font:         0
+st.xfps:              120
+st.actionfps:         30
+! Amount of lines scrolled
+st.mouseScrollLines:  2
+! Kerning / character bounding-box height multiplier
+st.chscale:           1.0
+! Kerning / character bounding-box width multiplier
+st.cwscale:           0.9
+! blinking timeout for terminal and cursor blinking (0 disables)
+st.blinktimeout:      800
+! bell volume. Value between -100 and 100. (0 disables)
+st.bellvolume:        0
+! this is a char that is exposed like so: `printf '\033[z'`
+! st.prompt_char:       $
+! This option is can be preedit style. Available values: `root` `overthespot` (Default taken `root`)
+st.imstyle:           root
+
+! opacity==255 means what terminal will be not transparent, 0 - fully transparent
+st.opacity:      255
+! Defaults taken from base16-twilight colorscheme.
+
+st.foreground:   #f5d9cd
+st.background:   #000000
+
+st.color0: #0C0C15
+st.color1: #F07C81
+st.color2: #F3908B
+st.color3: #D1A58F
+st.color4: #F7AC9B
+st.color5: #FBBBA4
+st.color6: #EFC3A9
+st.color7: #f5d9cb
+
+st.color8: #ab978e
+st.color9: #F07C81
+st.color10: #F3908B
+st.color11: #D1A58F
+st.color12: #F7AC9B
+st.color13: #FBBBA4
+st.color14: #EFC3A9
+st.color15: #f5d9cb
+
+st.color16:      #cda869
+st.color17:      #9b703f
+st.color18:      #323537
+st.color19:      #464b50
+st.color20:      #838184
+st.color21:      #c3c3c3
+
+
+! Black color that will not be affected by bold highlighting.
+st.color66: #0C0C15
+
+Xft.antialias:  1
+Xft.autohint:   0
+Xft.dpi:        96
+Xft.hinting:    1
+Xft.hintstyle:  hintfull
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+
