@@ -23,7 +23,7 @@ st.cursorthickness:   2
 st.cursorblinkstyle:  2
 ! 0: cursor blinks with a constant interval; 1: blinking cycle resets on key input
 st.cursorblinkontype: 1
-st.bold_font:         0
+st.bold_font:         1
 st.xfps:              120
 st.actionfps:         30
 ! Amount of lines scrolled
