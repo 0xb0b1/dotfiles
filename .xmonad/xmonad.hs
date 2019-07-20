@@ -163,7 +163,7 @@ myApps = composeAll
 myStartupHook :: X()
 myStartupHook = do
   spawn "hsetroot -fill $HOME/Images/playerunkowns.jpg"
-  spawn "xrdb -load $HOME/.Xresources"
+  spawn "xrdb -load $HOME/.Xresources_gray"
   spawn "xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'"
 
 -- STATUS BAR
