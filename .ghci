@@ -32,6 +32,9 @@ let if' p x y = if p then x else y
 :def pl \s -> return $ ":! pointfree \"" ++ s ++ "\""
 :def clear const . return $ ":! clear"
 
+:def hoogle \x -> return $ ":!hoogle --color " ++ (simple_shell_escape x)
+:def doc \x -> return $ ":!hoogle --info --color " ++ (simple_shell_escape x)
+
 -- show types
 :set +t
 
@@ -46,8 +49,5 @@ let escape_single_quote c = if c == '\'' then "'\"'\"'" else [c]
 
 -- Simple heuristic to escape shell command arguments.
 let simple_shell_escape = single_quote . (concatMap escape_single_quote)
-
-:def hoogle \x -> return $ ":!hoogle --color " ++ (simple_shell_escape x)
-:def doc \x -> return $ ":!hoogle --info --color " ++ (simple_shell_escape x)
 
 :set prompt "\ESC[32m\STX λ \ESC[m\STX"
