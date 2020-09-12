@@ -1,0 +1,61 @@
+ctrl + alt + t
+    telegram-desktop
+ctrl + {Left}
+    xbacklight -dec 5
+ctrl + {Right}
+    xbacklight -inc 5
+super + {Up}
+	exec amixer -q sset Master 5%+ unmute
+super + {Down}
+	exec amixer -q sset Master 5%- unmute
+super + a
+  chromium
+alt + p
+	xst -e ranger
+super + Return
+	xst -e tmux
+super + d
+ 	rofi -show run -matching fuzzy -font "Exo 2 12" -padding 60 -width 35 -lines 6 -click-to-exit rofi -color-normal "#272727,#EEF6F6,#272727,#FFFFFF,#000000" -color-window "#272727,#FFFFFF,#272727" -hide-scrollbar
+super + alt + q
+	pkill -x polybar; bspc quit
+super + m
+	bspc desktop -l next
+super + g
+	bspc node -s biggest
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+alt + {Left,Right}
+	bspc desktop -f {prev,next}
+
+shift + ctrl + {x,y,z}
+	bspc node -g {locked,sticky,private}
+
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+#super + {Left,Right}
+#	bspc {node} -f last
+
+super + {Right,Left}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+super + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 20,right 20 0}
+super + alt + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 +20,0 -20,+20 0}
+
+# focus the next/previous desktop in the current monitor
+super + {Left, Right}
+	bspc desktop -f {prev,next}.local
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# dynamically increase and decrease gap size on a desktop
+super + {minus,plus}
+  bspc config -d focused window_gap "$(( $(bspc config -d focused window_gap) {+,-} 4))"
+
