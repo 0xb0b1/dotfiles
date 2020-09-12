@@ -1,0 +1,127 @@
+#=============================================================================
+# dark_powered.toml --- dark powered configuration example for SpaceVim
+# Copyright (c) 2016-2017 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+    # set indentation style
+    default_indent = 4
+    expand_tab = true
+
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+    colorscheme = "gruvbox"
+    colorscheme_bg = "dark"
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = true
+    # guifont = "Fira Code:h12"
+    buffer_index_type = 4
+    enable_tabline_filetype_icon = true
+    filemanager = "nerdtree"
+    filetree_direction = "left"
+    enable_vimfiler_gitstatus = true
+
+
+
+    # Disable statusline separator, if you want to use other value, please
+    # install nerd fonts
+    # options for statusline
+    # Set the statusline separators of statusline, default is "arrow"
+    statusline_separator = "arrow"
+    # Set the statusline separators of inactive statusline
+    statusline_inactive_separator = "arrow"
+
+    # Set SpaceVim buffer index type
+    buffer_index_type = 1
+    # 0: 1 ➛ ➊
+    # 1: 1 ➛ ➀
+    # 2: 1 ➛ ⓵
+    # 3: 1 ➛ ¹
+    # 4: 1 ➛ 1
+
+    # Enable/Disable show mode on statusline
+    enable_statusline_mode = false
+
+    # left sections of statusline
+    statusline_left_sections = [
+       'winnr',
+       'major mode',
+       'filename',
+       'fileformat',
+       'minor mode lighters',
+       'version control info',
+       'search status'
+    ]
+    # right sections of statusline
+    statusline_right_sections = [
+       'cursorpos',
+       'percentage',
+       'input method'
+#   'date',
+#       'time'
+    ]
+
+    # 'winnr' window number
+    # 'syntax checking'
+    # 'filename' file name
+    # 'fileformat' file format
+    # 'major mode'
+    # 'minor mode lighters'
+    # 'cursorpos' cursor position
+    # 'percentage' content range
+    # 'date' date
+    # 'time' time
+    # 'whitespace' line number with trailing space at the end
+    # 'battery status' battery status
+    # 'input method' input method
+    # 'search status' search index
+
+
+# Enable autocomplete layer
+[[layers]]
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "smart"
+
+[[layers]]
+  name = 'shell'
+  default_position = 'bottom'
+  default_height = 30
+
+[[layers]]
+  name = "lang#javascript"
+
+[[layers]]
+  name = "lang#typescript"
+
+[[layers]]
+  name = "lang#markdown"
+
+[[layers]]
+  name = "lang#toml"
+
+[[layers]]
+  name = "lang#html"
+
+[[layers]]
+  name = "tmux"
+  tmux_navigator_modifier = "alt"
+
+[[layers]]
+  name = "core#statusline"
+  enable = false 
+
+[[layers]]
+  name = "ui"
+  enable = true
+
+[[layers]]
+  name = "shell"
+  default_position = "bottom"
+  default_height = 24
