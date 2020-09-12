@@ -1,22 +1,22 @@
 # ![alt text](https://github.com/0xM4N/dotfiles/blob/master/dotfiles.jpg)
 
 
-**OS**: Funtoo Linux
+**OS**: Void Linux
 
-**WM**: XMonad
+**WM**: Bspwm
 
-**BAR**: dzen+conky
+**BAR**: polybar
 
-**BAR-FONT**: Exo 2
+**BAR-FONT**: Exo 2 bold
 
-**SHELL**: tcsh
+**SHELL**: zsh(oh-my-zsh)
 
 **TERMINAL**: xst + tmux
 
-**TERMINAL-FONT**: Fantasque Sans Mono
+**TERMINAL-FONT**: mononoki Nerd Font
 
 **TMUX**: https://github.com/gpakosz/.tmux
 
 
-# ![alt text](https://github.com/0xM4N/dotfiles/blob/master/Images/print.jpg)  
+# ![alt text](https://github.com/0xM4N/dotfiles/blob/master/Images/screenshot.png)  
 
