@@ -59,8 +59,8 @@ wColor handle = def
         }
   where iStart  = "^bg(" ++ "#313131" ++ ")^fg(" ++ "#FFFfFf" ++ ")" ++ " " ++ wIcons1
         iSep    = " "
-        wIcons  = "/home/b0b1/.xmonad/icons/"
-        wIcons1 = " ^i(/home/b0b1/.xmonad/icons/)"
+        wIcons  = "~/.xmonad/icons/"
+        wIcons1 = " ^i(~/.xmonad/icons/)"
 
 -- GRID SELECTOR COLOURS
 greyColorizer = colorRangeFromClassName
