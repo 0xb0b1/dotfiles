@@ -7,14 +7,13 @@
 ! see src/config.h for more information about option meanings.
 
 ! These options only take effect on startup.
-! st.termname:     screen-256color
+!st.termname:     screen-256color
 ! if you do not set shell, precedence is: -e arg, utmp option, SHELL env var, /etc/passwd shell
 st.shell:        /usr/bin/zsh
 
 ! The following options options can be reloaded via USR1 signal.
-! st.font:              Hurmit Nerd Font:pixelsize=15:antialias=true:autohint=true;
-st.font:              mononoki Nerd Font:pixelsize=15:antialias=true:autohint=true; */ */
-st.borderpx:          18
+st.font:              agave Nerd Font:pixelsize=15:antialias=true:autohint=true;
+st.borderpx:          16
 ! Available cursor values: 2 4 6 7 = █ _ | ☃ ( 1 3 5 are blinking versions)
 st.cursorshape:       4
 ! thickness of underline and bar cursors
@@ -24,15 +23,15 @@ st.cursorthickness:   2
 st.cursorblinkstyle:  2
 ! 0: cursor blinks with a constant interval; 1: blinking cycle resets on key input
 st.cursorblinkontype: 1
-st.bold_font:         1
+st.bold_font:         0
 st.xfps:              120
-st.actionfps:         60
+st.actionfps:         30
 ! Amount of lines scrolled
 st.mouseScrollLines:  2
 ! Kerning / character bounding-box height multiplier
 st.chscale:           1.0
 ! Kerning / character bounding-box width multiplier
-st.cwscale:           1.0
+st.cwscale:           0.9
 ! blinking timeout for terminal and cursor blinking (0 disables)
 st.blinktimeout:      800
 ! bell volume. Value between -100 and 100. (0 disables)
@@ -46,26 +45,27 @@ st.imstyle:           root
 st.opacity:      255
 ! Defaults taken from base16-twilight colorscheme.
 
-st.foreground:   #cdcdcf
+st.foreground:   #ece7e0
 st.background:   #272727
 
-st.color0: #0C0C0C
-st.color1: #454545
-st.color2: #575757
-st.color3: #6D6D6D
-st.color4: #919191
-st.color5: #B1B1B1
-st.color6: #dfdfdf
-st.color7: #FFFFFF
+st.color0: #0a110d
+st.color1: #4F6257
+st.color2: #476559
+st.color3: #749c7a
+!916F5A
+st.color4: #6D8B71
+st.color5: #A1AB95
+st.color6: #CEC8B2
+st.color7: #ece7e0
 
-st.color8: #9c9c9c
-st.color9: #454545
-st.color10: #575757
-st.color11: #6D6D6D
-st.color12: #919191
-st.color13: #B1B1B1
-st.color14: #dfdfdf
-st.color15: #9c9c9c
+st.color8: #a5a19c
+st.color9: #4F6257
+st.color10: #476559
+st.color11: #749c7a
+st.color12: #6D8B71
+st.color13: #A1AB95
+st.color14: #CEC8B2
+st.color15: #ece7e0
 
 st.color16:      #cda869
 st.color17:      #9b703f
@@ -76,10 +76,10 @@ st.color21:      #c3c3c3
 
 
 ! Black color that will not be affected by bold highlighting.
-st.color66: #FF0000
+st.color66: #0a110d
 
 Xft.antialias:  1
-Xft.autohint:   1
+Xft.autohint:   0
 Xft.dpi:        96
 Xft.hinting:    1
 Xft.hintstyle:  hintfull
@@ -87,6 +87,6 @@ Xft.lcdfilter:  lcddefault
 Xft.rgba:       rgb
 
 
-emacs*foreground:     #c4c4c4
-emacs*background:     #272727
-Xcursor.theme: Breeze_Snow
+emacs*foreground:   #c4c4c4
+emacs*background:   #070606
+
