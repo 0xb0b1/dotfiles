@@ -8,9 +8,12 @@ conky.config = {
 };
 
 conky.text = [=[
+    ^fg(\#515151) ^i($HOME/.xmonad/icons/temp.xbm)^fg() ${exec python3  $HOME/.xmonad/scripts/weather.py}  \
+    ^fg(\#515151) ^i($HOME/.xmonad/icons/net_up_01.xbm)^fg()  ${upspeedf wlp3s0}  \
+    ^fg(\#515151) ^i($HOME/.xmonad/icons/net_down_01.xbm)^fg()  ${downspeedf wlp3s0}  \
     ^fg(\#515151) ^i($HOME/.xmonad/icons/cpu.xbm)^fg(\#FFFFFF)  ${exec awk '{print $1+$2+$3}' /proc/loadavg }  \
-    ^fg(\#515151) ^i($HOME/.xmonad/icons/mem.xbm)^fg(\#FFFFFF)  ${exec free -m | awk '/Mem/ {print $3 "Mib"}' }  \
+    ^fg(\#515151) ^i($HOME/.xmonad/icons/mem.xbm)^fg(\#FFFFFF)  ${exec awk '/MemTotal/ {t=$2} /MemFree/ {f=$2} /^Cached/ {c=$2} END {print t-f-c " " t;}' /proc/meminfo  | gdbar -h 12 -w 50 -fg  '#FFFFFF' -bg  '#313131' -ss 1 -sw 4  -nonl -s o -max 101 }  \
     ^fg(\#515151) ^i($HOME/.xmonad/icons/phones.xbm)^fg(\#FFFFFF)  ${exec  amixer | awk 'NR==5{gsub(/[[:punct:]]/,""); print $4}' | gdbar -h 12 -w 50 -fg '#FFFFFF' -bg '#313131' -ss 1 -sw 4  -nonl -s o -max 101}  \
-    ^fg(\#515151) ^i($HOME/.xmonad/icons/bat_full_01.xbm)^fg(\#FFFFFF)  ${exec acpi -b | cut -d '%' -f1 | awk 'BEGIN {sum=0.0f} {sum+=$4} END {print sum}' | gdbar -h 12 -w 50 -fg '#FFFFFF' -bg '#313131' -ss 1 -sw 4 -nonl -s o -max 101}  \
-    ^fg(\#515151) ^i($HOME/.xmonad/icons/clock1.xbm)^fg(\#FFFFFF) ^ca() ${exec date | awk '{print $4"  "$1" "$2" "$3 }'}  \
+    ^fg(\#515151) ^i($HOME/.xmonad/icons/batt10.xbm)^fg(\#FFFFFF)  ${exec acpi -b | cut -d '%' -f1 | awk 'BEGIN {sum=0.0f} {sum+=$4} END {print sum}' | gdbar -h 12 -w 50 -fg '#FFFFFF' -bg '#313131' -ss 1 -sw 4 -nonl -s o -max 101}  \
+    ^fg(\#515151) ^i($HOME/.xmonad/icons/clock1.xbm)^fg(\#FFFFFF) ^ca() ${exec date | awk 'NR==1{print $1" "$2" "$3" "$4}'}  \
 ]=];
