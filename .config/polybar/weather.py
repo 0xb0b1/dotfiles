@@ -1,8 +1,8 @@
 #!/bin/python3
 import urllib.request
 
-city = "CHANGE ME"
-api_key = "CHANGE ME" # get your api `openweathermap.org`
+city = "CHANGEME"
+api_key = "CHANGEME"
 
 try: 
     weather = eval(str(urllib.request.urlopen("http://api.openweathermap.org/data/2.5/weather?q={}&APPID={}".format(city, api_key)).read())[2:-1])

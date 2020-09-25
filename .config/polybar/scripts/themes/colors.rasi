@@ -1,0 +1,13 @@
+/* Color-Scheme For All Themes*/
+
+* {
+    background:    #272727;
+    background-alt:    #000000ff;
+    foreground:    #FFFFFF;
+    border:    #FFFFFF;
+    selected:    #FFFFFF;
+    urgent:    #EC407Aff;
+	logo:    #EC407Aff;
+	on:    #61C766ff;
+	off:    #EC7875ff;
+}
