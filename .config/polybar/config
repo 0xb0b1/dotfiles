@@ -16,11 +16,14 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-width = 93.25%
+;width = 93.25%
+width = 98%
 height = 28
 
-offset-x = 3.4%
-offset-y = 12
+;offset-x = 3.4%
+;offset-y = 12
+offset-x = 1%
+offset-y = 1%
 
 line-size = 0
 line-color = #f00
@@ -28,9 +31,7 @@ line-color = #f00
 padding-right = 4
 module-margin = 1
 
-
 font-0 = Exo 2:bold:pixelsize=10;1
-;font-0 = FantasqueSansMono:pixelsize=9;1
 font-1 = unifont:fontformat=truetype:size=12:antialias=false;1
 font-2 = siji:pixelsize=8;1
 font-3 = FontAwesome:size=9;1
@@ -50,7 +51,7 @@ wm-name = bspwm
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
-tray-background = #ff000000
+tray-background = ${colors.background}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 0
@@ -144,14 +145,27 @@ label-foreground = #ffffff
 ;ws-icon-5 = media; media
 ;ws-icon-6 = desk; desk
 
-ws-icon-0 = one;ONE
-ws-icon-1 = two;TWO
-ws-icon-2 = three;THREE
-ws-icon-3 = four;FOUR
-ws-icon-4 = five;FIVE
-ws-icon-5 = six;SIX
-ws-icon-6 = seven;SEVEN
+/* ws-icon-0 = zero; НОЛЬ  */
+/* ws-icon-1 = one; ОДИН  */
+/* ws-icon-2 = two; ДВА  */
+/* ws-icon-3 = three; ТРИ  */
+/* ws-icon-4 = four; ЧЕТЫРЕ  */
+/* ws-icon-5 = five; ПЯТЬ  */
+/* ws-icon-6 = six; ШЕСТЬ  */
+/* ws-icon-7 = seven; СЕМЬ  */
+/* ws-icon-8 = eight; ВОСЕМЬ */
+/*  */
 
+/* НОЛЬ ОДИН ДВА ТРИ ЧЕТЫРЕ ПЯТЬ ШЕСТЬ СЕМЬ ВОСЕМЬ */
+ws-icon-0 = zero;ноль
+ws-icon-1 = one;один
+ws-icon-2 = two;два
+ws-icon-3 = three;три
+ws-icon-4 = four;четыре
+ws-icon-5 = five;пять
+ws-icon-6 = six;шесть
+ws-icon-7 = seven;семь
+ws-icon-8 = eight;восемь
 
 ws-icon-default = ♟
 
@@ -241,8 +255,9 @@ interval = 0.1
 
 date = 
 date-alt = " %Y-%m-%d"
-
-time = "   %a %b %d   %H:%M:%S  %p"
+ 
+time = "   %a %b %d  |  %H:%M:%S  %p"
+;time = "   %a %b %d   %H:%M:%S  %p"
 time-alt = %H:%M:%S
 
 format-prefix-foreground = #fff
@@ -275,7 +290,9 @@ ramp-signal-5 = 
 type = internal/cpu
 interval = 0.5
 
-label = " 閭 %percentage%%"
+; label = " 閭 %percentage%%"
+label = "%percentage%%"
+format-prefix = "  "
 
 label-foreground = ${colors.foreground}
 ;label-foreground = #FFFFFF
@@ -287,7 +304,10 @@ interval = 0.5
 
 ;format-background = ${colors.background-alt}
 format = <label>
-format-prefix = "  "
+;format-prefix = "  "
+
+format-prefix = "  "
+
 format-suffix = "   "
 format-prefix-foreground = #fff
 ;format-foreground = #fff
@@ -298,3 +318,4 @@ exec = free -m | awk '/Mem/ {print $3" MB"}'
 type = internal/xwindow
 format = <label>
 label-maxlen = 40
+
