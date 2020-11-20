@@ -1,4 +1,4 @@
-# ![alt text](https://github.com/0xM4N/dotfiles/blob/master/dotfiles.jpg)
+# ![alt text](https://github.com/0xb0b1/dotfiles/blob/main/dotfiles.jpg)
 
 
 **OS**: Void Linux
@@ -18,5 +18,5 @@
 **TMUX**: https://github.com/gpakosz/.tmux
 
 
-# ![alt text](https://github.com/0xM4N/dotfiles/blob/master/Images/screenshot.png)  
+# ![alt text](https://github.com/0xM4N/dotfiles/blob/main/Images/screenshot.png)  
 
