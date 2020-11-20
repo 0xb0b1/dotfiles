@@ -19,8 +19,10 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 15 :weight 'semi-light)
-    doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;;:weight 'semi-light
+(setq doom-font (font-spec :family "Fira Code" :size 15 )
+    doom-big-font (font-spec :family "Fira Code" :size 24)
+    doom-variable-pitch-font (font-spec :family "Overpass" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -54,3 +56,27 @@
 ;; they are implemented.
 
 (setq fancy-splash-image (concat doom-private-dir "splash/doom-emacs-color.png"))
+
+(require 'elcord)
+(elcord-mode)
+(setq elcord-use-major-mode-as-main-icon t)
+
+(use-package! tree-sitter
+    :config
+    (require 'tree-sitter-langs)
+    (global-tree-sitter-mode)
+    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+(setq frame-title-format
+    '(""
+        (:eval
+         (if (s-contains-p org-roam-directory (or buffer-file-name ""))
+            (replace-regexp-in-string
+             ".*/[0-9]*-9" "☰ "
+             (subst-char-in-string ?_ ? buffer-file-name))
+            "%b"))
+        (:eval
+         (let ((project-name (projectile-project-name)))
+         (unless (string = "-" project-name)
+          (format (if (buffer-modified-o) " ◉ %s" "  ●  %s") project-name))))))
+
