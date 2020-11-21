@@ -1,0 +1,69 @@
+[options]
+font = mplus Nerd Font 12
+
+[colors]
+
+# special
+foreground      = #f8f8f2
+foreground_bold = #f8f8f2
+cursor          = #f8f8f2
+background      = rgba(38, 38, 38, 1)
+#background      = #272727
+
+# black
+color0  = #000000
+color8  = #4d4d4d
+
+# red
+color1  = #ff5555
+color9  = #ff6e67
+
+# green
+color2  = #50fa7b
+color10 = #5af78e
+
+# yellow
+color3  = #f1fa8c
+color11 = #f4f99d
+
+# blue
+color4  = #bd93f9
+color12 = #caa9fa
+
+# magenta
+color5  = #ff79c6
+color13 = #ff92d0
+
+# cyan
+color6  = #8be9fd
+color14 = #9aedfe
+
+# white
+color7  = #bfbfbf
+color15 = #e6e6e6
+
+
+# [colors]
+# foreground =                     #F9F9F9
+# foreground_bold =                #FFFFFF
+# cursor =                         #F9F9F9
+# background =                     #272727
+# cursor_foreground =              #373E4D
+
+# color0 =                         #434C5E
+# color1 =                         #FA5AA4
+# color2 =                         #2BE491
+# color3 =                         #FA946E
+# color4 =                         #63C5EA
+# color5 =                         #CF8EF4
+# color6 =                         #89CCF7
+# color7 =                         #F9F9F9
+
+# color8 =                         #4C566A
+# color9 =                         #FA74B2
+# color10 =                        #44EB9F
+# color11 =                        #FAA687
+# color12 =                        #7ACBEA
+# color13 =                        #D8A6F4
+# color14 =                        #A1D5F7
+# color15 =                        #FFFFFF
