@@ -20,7 +20,7 @@
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
     enable_guicolors = true
-    # guifont = "Fira Code:h12"
+    guifont = "mplus Nerd Font 12"
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     filemanager = "nerdtree"
@@ -38,7 +38,7 @@
     statusline_inactive_separator = "arrow"
 
     # Set SpaceVim buffer index type
-    buffer_index_type = 1
+    buffer_index_type = 3
     # 0: 1 ➛ ➊
     # 1: 1 ➛ ➀
     # 2: 1 ➛ ⓵
@@ -46,7 +46,7 @@
     # 4: 1 ➛ 1
 
     # Enable/Disable show mode on statusline
-    enable_statusline_mode = false
+    enable_statusline_mode = true
 
     # left sections of statusline
     statusline_left_sections = [
@@ -124,4 +124,4 @@
 [[layers]]
   name = "shell"
   default_position = "bottom"
-  default_height = 24
+  default_height = 20
