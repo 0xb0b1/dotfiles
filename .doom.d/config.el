@@ -61,22 +61,4 @@
 (elcord-mode)
 (setq elcord-use-major-mode-as-main-icon t)
 
-(use-package! tree-sitter
-    :config
-    (require 'tree-sitter-langs)
-    (global-tree-sitter-mode)
-    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-
-(setq frame-title-format
-    '(""
-        (:eval
-         (if (s-contains-p org-roam-directory (or buffer-file-name ""))
-            (replace-regexp-in-string
-             ".*/[0-9]*-9" "☰ "
-             (subst-char-in-string ?_ ? buffer-file-name))
-            "%b"))
-        (:eval
-         (let ((project-name (projectile-project-name)))
-         (unless (string = "-" project-name)
-          (format (if (buffer-modified-o) " ◉ %s" "  ●  %s") project-name))))))
 
