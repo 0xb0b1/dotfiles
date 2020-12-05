@@ -20,14 +20,12 @@
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
     enable_guicolors = true
-    guifont = "mplus Nerd Font 12"
+    guifont = "Fira Code 12"
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     filemanager = "nerdtree"
     filetree_direction = "left"
     enable_vimfiler_gitstatus = true
-
-
 
     # Disable statusline separator, if you want to use other value, please
     # install nerd fonts
@@ -62,9 +60,9 @@
     statusline_right_sections = [
        'cursorpos',
        'percentage',
-       'input method'
-#   'date',
-#       'time'
+       'input method',
+       'date',
+       'time'
     ]
 
     # 'winnr' window number
@@ -93,6 +91,15 @@
   name = 'shell'
   default_position = 'bottom'
   default_height = 30
+
+[[layers]]
+  name = "lsp"
+  filetypes = [
+    "javascript",
+    "html",
+    "css"
+  ]
+
 
 [[layers]]
   name = "lang#javascript"
@@ -125,3 +132,15 @@
   name = "shell"
   default_position = "bottom"
   default_height = 20
+
+[[layers]]
+  name = "gtags"
+
+[[layers]]
+  name = "lang#graphql"
+
+[[layers]]
+  name = "fzf"
+
+[[layers]]
+  name = "cscope"
