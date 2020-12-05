@@ -9,7 +9,7 @@ export ZSH="/home/b0b1/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="evan"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="evan"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,10 +70,18 @@ ENABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
+    archlinux
+    yarn
     npm
+    node
+    npx
+    nvm
+    tmux
     colorize
     sudo
+    git
+    git-prompt
+    github
     man
     colored-man-pages
     vi-mode
@@ -118,19 +126,21 @@ alias df='df -h'
 alias free='free -m'
 alias emacs='emacs -nw --color=always'
 alias ls='lsd -AF'
-alias neofetch='neofetch --ascii "$(fortune | cowsay -W 30)"'
-alias alsamixer='alsamixer -g'
+alias node='~/.nvm/versions/node/v14.15.1/bin/node'
 
 # export PATH="$HOME/.cargo/bin:$PATH"
 # export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
+#
+# export PATH="$HMOE/.node_modules/bin:$PATH"
+#
+# export NPM_PACKAGES="/home/b0b1/.npm-packages"
+# export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
+# export PATH="$NPM_PACKAGES/bin:$PATH"
+#
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-export NPM_PACKAGES="/home/b0b1/.npm-packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
-export PATH="$NPM_PACKAGES/bin:$PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath`
-# command
-#unset MANPATH  # delete if you already modified MANPATH elsewhere in your config
-# export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-export PATH=~/.npm-global/bin:$PATH
+export PATH="$PATH:`yarn global bin`"
+export GTAGSLABEL=pygments
