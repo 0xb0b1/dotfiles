@@ -6,14 +6,19 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " coc extensions
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " File navigation, similar to Ctrl+p hotkey in vscode
+Plug 'junegunn/fzf.vim'
+
 Plug 'yuezk/vim-js'
+Plug 'prettier/vim-prettier'
 Plug 'ianks/vim-tsx'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
+Plug 'ap/vim-buftabline'
+Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
@@ -24,6 +29,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-markdown'
 Plug 'nelstrom/vim-markdown-folding'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }} " Markdown preview
 Plug 'morhetz/gruvbox'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
@@ -31,6 +37,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'anned20/vimsence'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'mattn/emmet-vim'
+Plug 'othree/xml.vim'
 Plug 'othree/html5.vim'
 
 "------------------------ THEME ------------------------
