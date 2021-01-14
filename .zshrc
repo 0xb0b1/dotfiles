@@ -9,7 +9,7 @@ export ZSH="/home/b0b1/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="evan"
-ZSH_THEME="evan"
+ZSH_THEME="nicoulaj"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -71,11 +71,6 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     archlinux
-    yarn
-    npm
-    node
-    npx
-    nvm
     tmux
     colorize
     sudo
@@ -131,7 +126,7 @@ alias node='~/.nvm/versions/node/v14.15.1/bin/node'
 # export PATH="$HOME/.cargo/bin:$PATH"
 # export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
-# export PATH="$HOME/.local/bin:$PATH"
+ export PATH="$HOME/bin:$PATH"
 #
 # export PATH="$HMOE/.node_modules/bin:$PATH"
 #
@@ -144,3 +139,5 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PATH="$PATH:`yarn global bin`"
 export GTAGSLABEL=pygments
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
