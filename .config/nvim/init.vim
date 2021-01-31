@@ -9,15 +9,26 @@ let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet',
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " File navigation, similar to Ctrl+p hotkey in vscode
 Plug 'junegunn/fzf.vim'
 
-Plug 'yuezk/vim-js'
-Plug 'prettier/vim-prettier'
+" web dev stack
 Plug 'ianks/vim-tsx'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
+Plug 'othree/xml.vim'
+Plug 'othree/html5.vim'
+Plug 'prettier/vim-prettier'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'ap/vim-buftabline'
+Plug 'tpope/vim-markdown'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }} " Markdown preview
+
+" utils
+Plug 'mbbill/undotree'
+Plug 'yggdroot/indentline'
+" Plug 'ap/vim-buftabline'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -27,58 +38,60 @@ Plug 'tpope/vim-surround'
 Plug 'lambdalisue/suda.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-markdown'
-Plug 'nelstrom/vim-markdown-folding'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }} " Markdown preview
-Plug 'morhetz/gruvbox'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'anned20/vimsence'
-Plug 'hail2u/vim-css3-syntax'
+"Plug 'anned20/vimsence'
 Plug 'mattn/emmet-vim'
-Plug 'othree/xml.vim'
-Plug 'othree/html5.vim'
+Plug 'voldikss/vim-floaterm'
+"Plug 'mhinz/vim-startify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'nathanaelkane/vim-indent-guides'
+
+" colorschemem
+Plug 'morhetz/gruvbox'
 
 "------------------------ THEME ------------------------
 " most importantly you need a good color scheme to write good code :D
 Plug 'dikiaap/minimalist'
 call plug#end()
 " == VIMPLUG END ================================
+
 " == AUTOCMD ================================ 
 " by default .ts file are not identified as typescript and .tsx files are not
 " identified as typescript react file, so add following
 au BufNewFile,BufRead *.js setlocal filetype=javascript
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
-au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact
+au BufNewFile,BufRead *.tsx,*.jsx setlocal filetype=typescriptreact
 " == AUTOCMD END ================================
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-
+" prettier 
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
+    let g:coc_global_extensions += ['coc-prettier']
 endif
 
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
+    let g:coc_global_extensions += ['coc-eslint']
 endif
 
 function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#float#has_float() == 0)
-    silent call CocActionAsync('doHover')
-  endif
+    if (coc#float#has_float() == 0)
+        silent call CocActionAsync('doHover')
+    endif
 endfunction
 
 function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
+    call timer_start(500, 'ShowDocIfNoDiagnostic')
 endfunction
 
 autocmd CursorHoldI * :call <SID>show_hover_doc()
 autocmd CursorHold * :call <SID>show_hover_doc()
 
-
+" jump into definition
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
@@ -127,12 +140,12 @@ map <F8> :set autochdir! autochdir?<CR>
 " Toggle vertical line
 set colorcolumn=
 fun! ToggleCC()
-  if &cc == ''
-    " set cc=1,4,21
-    set cc=80
-  else
-    set cc=
-  endif
+    if &cc == ''
+        " set cc=1,4,21
+        set cc=80
+    else
+        set cc=
+    endif
 endfun
 nnoremap <silent> <F9> :call ToggleCC()<CR>
 
@@ -178,8 +191,8 @@ imap <M-b> <C-left>
 
 " Spacemacs-like keybinds
 " Change <leader> bind from default \
-" nnoremap <space> <nop>
-" let mapleader=" "
+nnoremap <space> <nop>
+let mapleader=" "
 
 " Make ci( work like quotes do
 function! New_cib()
@@ -328,88 +341,88 @@ let g:ctrlp_clear_cache_on_exit = 0
 " Lightline
 " Get default from :h lightline
 let g:lightline = {
-    \ 'colorscheme': 'gruvbox',
-    \ }
+            \ 'colorscheme': 'gruvbox',
+            \ }
 
 let g:lightline.active = {
-    \ 'left': [ [ 'mode', 'paste', 'sep1' ],
-    \           [ 'readonly', 'ficolorsme', 'modified' ],
-    \           [ ] ],
-    \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ],
-    \            [ 'filetype' ] ]
-    \ }
+            \ 'left': [ [ 'mode', 'paste', 'sep1' ],
+            \           [ 'readonly', 'ficolorsme', 'modified' ],
+            \           [ ] ],
+            \ 'right': [ [ 'lineinfo' ],
+            \            [ 'percent' ],
+            \            [ 'filetype' ] ]
+            \ }
 
 let g:lightline.inactive = {
-    \ 'left': [ [ 'mode', 'paste', 'sep1' ],
-    \           [ 'readonly', 'ficolorsme', 'modified' ] ],
-    \ 'right': [ [ 'lineinfo' ],
-    \            [ 'percent' ],
-    \            [ 'filetype' ] ]
-    \ }
+            \ 'left': [ [ 'mode', 'paste', 'sep1' ],
+            \           [ 'readonly', 'ficolorsme', 'modified' ] ],
+            \ 'right': [ [ 'lineinfo' ],
+            \            [ 'percent' ],
+            \            [ 'filetype' ] ]
+            \ }
 
 let g:lightline.tabline = {
-    \ 'left': [ [ 'tabs' ] ],
-    \ 'right': [ ] }
+            \ 'left': [ [ 'tabs' ] ],
+            \ 'right': [ ] }
 
 let g:lightline.tab = {
-    \ 'active': [ 'tabnum', 'ficolorsme', 'modified' ],
-    \ 'inactive': [ 'tabnum', 'ficolorsme', 'modified' ] }
+            \ 'active': [ 'tabnum', 'ficolorsme', 'modified' ],
+            \ 'inactive': [ 'tabnum', 'ficolorsme', 'modified' ] }
 
 let g:lightline.component = {
-    \ 'mode': '%{lightline#mode()}',
-    \ 'absolutepath': '%F',
-    \ 'relativepath': '%f',
-    \ 'ficolorsme': '%t',
-    \ 'modified': '%M',
-    \ 'bufnum': '%n',
-    \ 'paste': '%{&paste?"PASTE":""}',
-    \ 'readonly': '%R',
-    \ 'charvalue': '%b',
-    \ 'charvaluehex': '%B',
-    \ 'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
-    \ 'fileformat': '%{&ff}',
-    \ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
-    \ 'percent': '%3p%%',
-    \ 'percentwin': '%P',
-    \ 'spell': '%{&spell?&spelllang:""}',
-    \ 'lineinfo': '%3l:%-2v',
-    \ 'line': '%l',
-    \ 'column': '%c',
-    \ 'close': '%999X X ',
-    \ 'winnr': '%{winnr()}',
-    \ 'sep1': ''
-    \}
+            \ 'mode': '%{lightline#mode()}',
+            \ 'absolutepath': '%F',
+            \ 'relativepath': '%f',
+            \ 'ficolorsme': '%t',
+            \ 'modified': '%M',
+            \ 'bufnum': '%n',
+            \ 'paste': '%{&paste?"PASTE":""}',
+            \ 'readonly': '%R',
+            \ 'charvalue': '%b',
+            \ 'charvaluehex': '%B',
+            \ 'fileencoding': '%{&fenc!=#""?&fenc:&enc}',
+            \ 'fileformat': '%{&ff}',
+            \ 'filetype': '%{&ft!=#""?&ft:"no ft"}',
+            \ 'percent': '%3p%%',
+            \ 'percentwin': '%P',
+            \ 'spell': '%{&spell?&spelllang:""}',
+            \ 'lineinfo': '%3l:%-2v',
+            \ 'line': '%l',
+            \ 'column': '%c',
+            \ 'close': '%999X X ',
+            \ 'winnr': '%{winnr()}',
+            \ 'sep1': ''
+            \}
 
 let g:lightline.mode_map = {
-    \ 'n' : 'N',
-    \ 'i' : 'I',
-    \ 'R' : 'R',
-    \ 'v' : 'V',
-    \ 'V' : 'L',
-    \ "\<C-v>": 'B',
-    \ 'c' : 'C',
-    \ 's' : 'S',
-    \ 'S' : 'S-LINE',
-    \ "\<C-s>": 'S-BLOCK',
-    \ 't': 'T',
-    \ }
+            \ 'n' : 'N',
+            \ 'i' : 'I',
+            \ 'R' : 'R',
+            \ 'v' : 'V',
+            \ 'V' : 'L',
+            \ "\<C-v>": 'B',
+            \ 'c' : 'C',
+            \ 's' : 'S',
+            \ 'S' : 'S-LINE',
+            \ "\<C-s>": 'S-BLOCK',
+            \ 't': 'T',
+            \ }
 
 
 let g:lightline.separator = {
-    \   'left': '', 'right': ''
-    \}
+            \   'left': '', 'right': ''
+            \}
 let g:lightline.subseparator = {
-    \   'left': '', 'right': '' 
-    \}
+            \   'left': '', 'right': '' 
+            \}
 
 let g:lightline.tabline_separator = g:lightline.separator
 let g:lightline.tabline_subseparator = g:lightline.subseparator
 
-"let g:lightline.enable = {
-"    \ 'statusline': 0,
-"    \ 'tabline': 1
-"    \ }
+            " 'statusline': 0,
+let g:lightline.enable = {
+            \ 'tabline': 1
+            \ }
 
 " deoplete
 "let g:deoplete#enable_at_startup = 1
@@ -420,7 +433,7 @@ nnoremap <silent><esc> :noh<return><esc>
 
 " Allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
-  set t_Co=16
+    set t_Co=16
 endif
 
 set wildmenu
@@ -434,17 +447,18 @@ set fillchars=vert:▎
 
 " Restore last cursor position and marks on open
 au BufReadPost *
-         \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' 
-         \ |   exe "normal! g`\""
-         \ | endif
+            \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' 
+            \ |   exe "normal! g`\""
+            \ | endif
 
-source $HOME/.config/nvim/statusline.vim
+"source $HOME/.config/nvim/statusline.vim
 set guicursor=n-ci:hor30-iCursor-blinkwait300-blinkon200-blinkoff150
 
 autocmd StdinReadPre * let s:std_in=1
 
+" NERDTree 
 map <C-n> :NERDTreeToggle<CR>
-
+" autocmd VimEnter * NERDTree
 let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
@@ -454,17 +468,17 @@ hi Directory guifg=#FF0000 ctermfg=white
 
 " github integration
 let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "✭",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \ "Dirty"     : "✗",
+            \ "Clean"     : "✔︎",
+            \ 'Ignored'   : '☒',
+            \ "Unknown"   : "?"
+            \ }
 
 
 let g:gitgutter_sign_added = '✚'
@@ -474,10 +488,58 @@ let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_modified_removed = '-'
 
 " discord presence
-let g:vimsence_client_id = '383069395896762369'
-let g:vimsence_small_text = 'NeoVim'
-let g:vimsence_small_image = 'neovim'
-let g:vimsence_editing_details = 'Editing: {}'
-let g:vimsence_editing_state = 'Working on: {}'
-let g:vimsence_file_explorer_text = 'In NERDTree'
-let g:vimsence_file_explorer_details = 'Looking for files'
+"let g:vimsence_client_id = '383069395896762369'
+"let g:vimsence_small_text = 'NeoVim'
+"let g:vimsence_small_image = 'neovim'
+"let g:vimsence_editing_details = 'Editing: {}'
+"let g:vimsence_editing_state = 'Working on: {}'
+"let g:vimsence_file_explorer_text = 'In NERDTree'
+"let g:vimsence_file_explorer_details = 'Looking for files'
+
+" indent guides
+" let g:indent_guides_enable_on_vim_startup = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 0
+
+" switch between buffers
+nnoremap <silent> gb :<C-U>call <SID>GoToBuffer(v:count, 'forward')<CR>
+nnoremap <silent> gB :<C-U>call <SID>GoToBuffer(v:count, 'backward')<CR>
+
+function! s:GoToBuffer(count, direction) abort
+    if a:count == 0
+        if a:direction ==# 'forward'
+            bnext
+        elseif a:direction ==# 'backward'
+            bprevious
+        else
+            echoerr 'Bad argument ' a:direction
+        endif
+        return
+    endif
+    " Check the validity of buffer number.
+    if index(s:GetBufNums(), a:count) == -1
+        echohl WarningMsg | echomsg 'Invalid bufnr: ' a:count | echohl None
+        return
+    endif
+
+    if a:direction ==# 'forward'
+        silent execute('buffer' . a:count)
+    endif
+endfunction
+
+function! s:GetBufNums() abort
+    let l:buf_infos = getbufinfo({'buflisted':1})
+    let l:buf_nums = map(l:buf_infos, "v:val['bufnr']")
+    return l:buf_nums
+endfunction
+
+" floatenTerm 
+let g:floaterm_keymap_new    = '<F7>'
+let g:floaterm_keymap_prev   = '<F8>'
+let g:floaterm_keymap_next   = '<F9>'
+let g:floaterm_keymap_toggle = '<F12>'
+let g:floaterm_keymap_new = '<Leader>ft'
+
+" airline theme
+let g:airline_theme='base16_grayscale'
