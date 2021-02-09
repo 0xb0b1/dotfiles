@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sxhkd &
-polybar mybar &
+$HOME/.config/polybar/launch.sh
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 bspc config top_padding 	    1
@@ -9,9 +9,9 @@ bspc config bottom_padding 	    1
 bspc config left_padding 	    1
 bspc config right_padding 	    1 
 bspc config border_width        1 
-bspc config window_gap          8
+bspc config window_gap          2
 
-bspc monitor -d zero one two three four five six seven eight
+bspc monitor -d 1 2 3 4 5
 
 bspc config split_ratio             0.50
 bspc config borderless_monocle      true
@@ -27,9 +27,10 @@ bspc config presel_feedback_color "#FF0000"
 #bspc desktop ^1 -l monocle
 bspc rule -a TelegramDesktop desktop=^3
 bspc rule -a Chromium desktop=^2 state=full
+bspc rule -a Discord desktop=^4
 bspc rule -a Anki desktop=^5
 bspc rule -a Sxiv state=floating follow=on
-bspc rule -a mplayer state=floating follow=on
+bspc rule -a MPlayer state=floating follow=on
 bspc rule -a mpv state=floating follow=on
 bspc rule -a zathura state=tiled follow=on
 
