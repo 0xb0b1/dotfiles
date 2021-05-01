@@ -9,7 +9,7 @@
 # All SpaceVim option below [option] section
 [options]
     # set indentation style
-    default_indent = 4
+    default_indent = 2
     expand_tab = true
 
     # set spacevim theme. by default colorscheme layer is not loaded,
@@ -94,11 +94,7 @@
 
 [[layers]]
   name = "lsp"
-  filetypes = [
-    "javascript",
-    "html",
-    "css"
-  ]
+# filetypes = [ "javascript", "html", "css" ]
 
 
 [[layers]]
@@ -115,11 +111,11 @@
 
 [[layers]]
   name = "lang#html"
-
-[[layers]]
-  name = "tmux"
-  tmux_navigator_modifier = "alt"
-
+#
+# [[layers]]
+  # name = "tmux"
+  # tmux_navigator_modifier = "alt"
+#
 [[layers]]
   name = "core#statusline"
   enable = false 
