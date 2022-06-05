@@ -11,7 +11,7 @@
 
 **SHELL**: zsh(oh-my-zsh)
 
-**TERMINAL**: xst + tmux
+**TERMINAL**: alacritty + tmux
 
 **TERMINAL-FONT**: mononoki Nerd Font
 
