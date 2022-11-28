@@ -1,4 +1,4 @@
-[https://www.lunarvim.org/][https://www.lunarvim.org/]
+[https://www.lunarvim.org/](https://www.lunarvim.org/)
 
 <br />
 
