@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+. "${HOME}/.owl4ce_var"
+
+mechanical()
+{
+    # Write the current one.
+    echo 'mechanical' > "$MOD_FILE"
+    # Set the theme and UI.
+    { "${VISMOD_DIR}/mechanical/theme" && "${VISMOD_DIR}/UI"; } &>/dev/null
+    # Notify if successfully set.
+    "$EXNOTIFY_SEND" -u low -r 7676 -i "$NOTIF_MECH_ICON" 'Visual Mode' 'Mechanical Theme applied'
+}
+
+mechanical_min()
+{
+    # Write the current one.
+    echo 'mechanical' > "$MOD_FILE" && echo 'minimal' >> "$MOD_FILE"
+    # Set the theme and UI.
+    { "${VISMOD_DIR}/mechanical/theme-minimal" && "${VISMOD_DIR}/UI" minimal; } &>/dev/null
+    # Notify if successfully set.
+    "$EXNOTIFY_SEND" -u low -r 7676 -i "$NOTIF_MECH_MIN_ICON" 'Minimal Mode' 'Mechanical Theme enabled'
+}
+
+eyecandy()
+{
+    # Write the current one.
+    echo 'eyecandy' > "$MOD_FILE"
+    # Set the theme and UI.
+    { "${VISMOD_DIR}/eyecandy/theme" && "${VISMOD_DIR}/UI"; } &>/dev/null
+    # Notify if successfully set.
+    "$EXNOTIFY_SEND" -u low -r 7676 -i "$NOTIF_EYC_ICON" 'Visual Mode' 'Eyecandy Theme applied'
+}
+
+eyecandy_min()
+{
+    # Write the current one.
+    echo 'eyecandy' > "$MOD_FILE" && echo 'minimal' >> "$MOD_FILE"
+    # Set the theme and UI.
+    { "${VISMOD_DIR}/eyecandy/theme-minimal" && "${VISMOD_DIR}/UI" minimal; } &>/dev/null
+    # Notify if successfully set.
+    "$EXNOTIFY_SEND" -u low -r 7676 -i "$NOTIF_EYC_MIN_ICON" 'Minimal Mode' 'Eyecandy Theme enabled'
+}
+
+kill_tray()
+{
+    for KILL_TRAY in $(echo "$CHK_TRAY"); do
+        killall -9 ${KILL_TRAY} &>/dev/null
+    done
+}
+
+killall tint2 dunst &>/dev/null
+
+case ${1} in
+    minimal) "${CHK_VISMOD}$([ -n "$CHK_MINMOD" ] || echo '_min')"
+    ;;
+    just_ui) xrdb "$XRESOURCES_CONFIG" &>/dev/null &
+             "${VISMOD_DIR}/UI" "$([ -z "$CHK_MINMOD" ] || echo 'minimal')"
+    ;;
+    *)       kill_tray
+             if [ "$CHK_VISMOD" != 'mechanical' ]; then
+                 "mechanical$([ -z "$CHK_MINMOD" ] || echo '_min')"
+             elif [ "$CHK_VISMOD" != 'eyecandy' ]; then
+                 "eyecandy$([ -z "$CHK_MINMOD" ] || echo '_min')"
+             fi; exec "$OB_TRAY" &>/dev/null
+    ;;
+esac
+
+exit ${?}

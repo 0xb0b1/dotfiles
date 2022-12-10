@@ -1,15 +1,16 @@
-# DO NOT CHANGE THE ORDER
+# Do not re-arrange !
 
 [options]
 allow_bold = true
 audible_bell = false
 bold_is_bright = true
-#cell_height_scale = 1.0
-#cell_width_scale = 1.0
+cell_height_scale = 10.0
+cell_width_scale = 1.0
 clickable_url = true
 dynamic_title = true
-font = Iosevka 14
-#fullscreen = true
+font = agave Nerd Font Mono 15
+#font = CaskaydiaCove Nerd Font 14
+fullscreen = true
 icon_name = terminal
 #mouse_autohide = false
 #scroll_on_output = false
@@ -19,7 +20,7 @@ icon_name = terminal
 scrollback_lines = -10000
 #search_wrap = true
 #urgent_on_bell = true
-#hyperlinks = false
+hyperlinks = true 
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
 #browser = xdg-open
@@ -43,45 +44,77 @@ size_hints = true
 #scrollbar = right
 
 [colors]
+foreground = #9bced7
+foreground_bold = #eaeaea
+background = #1f1d29
+highlight = #2f2f2f
+color0 = #403c58
+color1 = #ea6f91
+color2 = #9bced7
+color3 = #f1ca93
+color4 = #34738e
+color5 = #c3a5e6
+color6 = #eabbb9
+color7 = #faebd7
+color8 = #6f6e85
+color9 = #ea6f91
+color10 = #9bced7
+color11 = #f1ca93
+color12 = #34738e
+color13 = #c3a5e6
+color14 = #eabbb9
+color15 = #ffffff
+# [colors]
+# # If both of these are unset, cursor falls back to the foreground color,
+# # and cursor_foreground falls back to the background color.
+# #cursor = #dcdccc
+# #cursor_foreground = #dcdccc
 
-# special
-foreground      = #f8f8f2
-foreground_bold = #f8f8f2
-cursor          = #f8f8f2
-#background      = rgba(40, 42, 54, 1)
-background      = #272727
+# # 20% background transparency (requires a compositor)
+# #background = rgba(63, 63, 63, 1)
 
-# black
-color0  = #000000
-color8  = #4d4d4d
+# # If unset, will reverse foreground and background
+# #highlight = #2f2f2f
 
-# red
-color1  = #ff5555
-color9  = #ff6e67
+# # special
+# foreground      = #f8f8f2
+# foreground_bold = #f8f8f2
+# cursor          = #f8f8f2
+# background      = rgba(40, 42, 54, 1)
+# #background = #272727
 
-# green
-color2  = #50fa7b
-color10 = #5af78e
+# # black
+# color0  = #000000
+# color8  = #4d4d4d
 
-# yellow
-color3  = #f1fa8c
-color11 = #f4f99d
+# # red
+# color1  = #ff5555
+# color9  = #ff6e67
 
-# blue
-color4  = #bd93f9
-color12 = #caa9fa
+# # green
+# color2  = #50fa7b
+# color10 = #5af78e
 
-# magenta
-color5  = #ff79c6
-color13 = #ff92d0
+# # yellow
+# ###############################################################################################################################################################################################################################color3  = #f1fa8c
+# ############################################################################################################################################################################################################color11 = #f4f99d
 
-# cyan
-color6  = #8be9fd
-color14 = #9aedfe
+# # blue
+# ############################################################################################################################################################################################################color4  = #bd93f9
+# color12 = #caa9fa
 
-# white
-color7  = #bfbfbf
-color15 = #e6e6e6
+# # magenta
+# color5  = #ff79c6
+# color13 = #ff92d0
+
+# # cyan
+# color6  = #8be9fd
+# color14 = #9aedfe
+
+# # white
+# color7  = #bfbfbf
+# color15 = #e6e6e6
+
 
 
 [hints]
@@ -92,7 +125,7 @@ color15 = #e6e6e6
 #active_background = #3f3f3f
 #padding = 2
 #border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+border_width = 0.5
+roundness = 10.0
 
 # vim: ft=dosini cms=#%s
