@@ -1,0 +1,11 @@
+#
+# These tray will be restarted after switching modes.
+# Each line parsed as individual execution processes,
+# don't use shell-syntaxis, only `command [options]`.
+#
+# https://github.com/owl4ce/dotfiles
+# ---
+
+parcellite
+nm-applet
+xfce4-power-manager

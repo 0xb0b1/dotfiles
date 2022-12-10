@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+. "${HOME}/.owl4ce_var"
+
+# Set the partial accent color and opacity level from owl4ce_var.
+{
+    "${VISMOD_DIR}/${CHK_VISMOD}/theme$([ -z "$CHK_MINMOD" ] || echo '-minimal')" partially 
+    "${VISMOD_DIR}/termody" trans
+    
+} &>/dev/null
+
+# ? Mode variables.
+if [ "$CHK_VISMOD" = 'mechanical' ]; then
+    PANEL_COL1="$MECH_TINT2_GRAD1" PANEL_COL2="$MECH_TINT2_GRAD2" PANEL_BTN="$MECH_START_BTN"
+    [ -n "$CHK_MINMOD" ] && NOTIFYD_FG="$MECH_MIN_DUNST_SMMRY" NOTIFYD_PB="$MECH_MIN_DUNST_PRGBR" \
+    || NOTIFYD_FG="$MECH_DUNST_SMMRY" NOTIFYD_PB="$MECH_DUNST_PRGBR"
+elif [ "$CHK_VISMOD" = 'eyecandy' ]; then
+    PANEL_COL1="$EYEC_TINT2_GRAD1" PANEL_COL2="$EYEC_TINT2_GRAD2" PANEL_BTN="$EYEC_START_BTN"
+    [ -n "$CHK_MINMOD" ] && NOTIFYD_FG="$EYEC_MIN_DUNST_SMMRY" NOTIFYD_PB="$EYEC_MIN_DUNST_PRGBR" \
+    || NOTIFYD_FG="$EYEC_DUNST_SMMRY" NOTIFYD_PB="$EYEC_DUNST_PRGBR"
+fi
+
+NOTIFYD()
+{
+    # Set the notification daemon summary color, opacity level, and web browser from owl4ce_var.
+    sed -e "/format/s/foreground='.*'/foreground='${NOTIFYD_FG}'/" \
+        -e "/highlight/s/= \".*\"/= \"${NOTIFYD_PB}\"/" \
+        -i "${DUNST_DIR}/${CHK_DUNST_MOD}"
+    sed -e "/transparency/s/=.*/= $((100-${DUNST:-100}))/" \
+        -e "/browser/s/=.*/= \"${WEB_BROWSER}\"/" \
+        -si "${DUNST_DIR}/dunstrc"-*
+    # Run the notification daemon.
+    dunst -config "${DUNST_DIR}/${CHK_DUNST_MOD}" &>/dev/null &
+}
+    
+PANEL()
+{
+    # Set panel main button colors and the glyphs from owl4ce_var.
+    sed -e "/start_color/s/= STARTCOLOR1/= ${PANEL_COL1}/" \
+        -e "/end_color/s/= STARTCOLOR2/= ${PANEL_COL2}/" \
+        -e "/button_text/s/= STARTMENU/= ${PANEL_BTN}/" \
+        -si "${TINT2_DIR}/${CHK_VISMOD}"-*.tint2rc
+    {
+        # Run the panel.
+        tint2 -c "${TINT2_DIR}/${CHK_VISMOD}-${CHK_ORT}.tint2rc"
+        # Rollback panel main button color and the glyphs from owl4ce_var.
+        sed -e "/start_color/s/= ${PANEL_COL1}/= STARTCOLOR1/" \
+            -e "/end_color/s/= ${PANEL_COL2}/= STARTCOLOR2/" \
+            -e "/button_text/s/= ${PANEL_BTN}/= STARTMENU/" \
+            -si "${TINT2_DIR}/${CHK_VISMOD}"-*.tint2rc
+        
+    } &>/dev/null &
+}
+
+NOTIFYD
+
+case ${1} in
+    minimal)   nitrogen --set-zoom-fill --save "${WALL_DIR}/${CHK_MINMOD_WALL}" &>/dev/null
+               tint2 -c "${TINT2_DIR}/statint-${CHK_VISMOD}.tint2rc" &>/dev/null &
+    ;;
+    partially) PANEL
+    ;;
+    *)         nitrogen --set-zoom-fill --save "${WALL_DIR}/${CHK_VISMOD_WALL}" &>/dev/null
+               PANEL
+    ;;
+esac
+
+exit ${?}

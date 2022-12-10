@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+export LC_ALL=POSIX LANG=POSIX; . "${HOME}/.owl4ce_var"
+
+command -v urxvt termite &>/dev/null || exec "$EXNOTIFY_SEND" -u low -r 14 'Install rxvt-unicode/termite!'
+
+# Set the URxvt icon file (auto) and URL launcher from owl4ce_var.
+sed -e "/URxvt.url-select.launcher/s|:.*|:        ${WEB_BROWSER}|" \
+    -e "/URxvt.iconFile/s|:.*|:                   ${TERM_ICON}|" \
+    -i "$XRESOURCES_CONFIG"
+    
+transparency()
+{
+    if [ "${URXVT:-100}" -lt 100 ]; then
+        sed -i '/URxvt.depth/s/:.*/:                      32/' "$XRESOURCES_CONFIG"
+    else
+        sed -i '/URxvt.depth/s/:.*/:                      24/' "$XRESOURCES_CONFIG"
+    fi
+    case ${1} in
+        apply) if [[  "$current" != *'!'* ]]; then
+                   sed -e "68s_\[.*\]_\[${URXVT:-100}\]_" \
+                       -e "84s_\[.*\]_\[100\]_" \
+                       -i "$XRESOURCES_CONFIG"
+               else
+                   sed -e "84s_\[.*\]_\[${URXVT:-100}\]_" \
+                       -e "68s_\[.*\]_\[100\]_" \
+                       -i "$XRESOURCES_CONFIG"
+               fi
+        ;;
+        swap)  if [[  "$current" = *'!'* ]]; then
+                   sed -e "68s_\[.*\]_\[${URXVT:-100}\]_" \
+                       -e "84s_\[.*\]_\[100\]_" \
+                       -i "$XRESOURCES_CONFIG"
+               else
+                   sed -e "84s_\[.*\]_\[${URXVT:-100}\]_" \
+                       -e "68s_\[.*\]_\[100\]_" \
+                       -i "$XRESOURCES_CONFIG"
+               fi
+        ;;
+    esac
+}
+
+CURRENT_TERM="$("$DEFAPPS_EXEC" -g terminal)"
+
+if [ "$CURRENT_TERM" = 'urxvt' ]; then
+    current="$(grep -F 'foreground' "$XRESOURCES_CONFIG" | sed 1q | grep -F '!')"
+    case ${1} in
+        trans) transparency apply
+        ;;
+        *)     transparency swap
+               if [[  "$current" != *'!'* ]]; then
+                   sed -e '103s_*_!*_' -e '104s_*_!*_' \
+                       -e '105s_*_!*_' -e '107s_*_!*_' \
+                       -e '108s_*_!*_' -e '110s_*_!*_' \
+                       -e '111s_*_!*_' -e '113s_!__' \
+                       -e '114s_!__' -e '115s_!__' \
+                       -e '117s_!__' -e '118s_!__' \
+                       -e '120s_!__' -e '121s_!__' \
+                       -i "$XRESOURCES_CONFIG"
+               else
+                   sed -e '103s_!__' -e '104s_!__' \
+                       -e '105s_!__' -e '107s_!__' \
+                       -e '108s_!__' -e '110s_!__' \
+                       -e '111s_!__' -e '113s_*_!*_' \
+                       -e '114s_*_!*_' -e '115s_*_!*_' \
+                       -e '117s_*_!*_' -e '118s_*_!*_' \
+                       -e '120s_*_!*_' -e '121s_*_!*_' \
+                       -i "$XRESOURCES_CONFIG"
+               fi
+            ;;
+        esac; xrdb "$XRESOURCES_CONFIG" &>/dev/null &
+elif [ "$CURRENT_TERM" = 'termite' ]; then
+    current="$(grep -F '#foreground = ' "$TERMITE_CONFIG" | sed 1q)"
+    if [[ "$current" != *'#foreground = #F9F9F9'* ]]; then
+        sed -e '73s_foreground_#foreground_' -e '74s_foreground_#foreground_' \
+            -e '75s_background_#background_' -e '84s_#foreground_foreground_' \
+            -e '85s_#foreground_foreground_' -e '86s_#background_background_' \
+            -e '77s_color_#color_' -e '78s_color_#color_' \
+            -e '80s_color_#color_' -e '81s_color_#color_' \
+            -e '88s_#color_color_' -e '89s_#color_color_' \
+            -e '91s_#color_color_' -e '92s_#color_color_' \
+            -i "$TERMITE_CONFIG"
+    else
+        sed -e '73s_#foreground_foreground_' -e '74s_#foreground_foreground_' \
+            -e '75s_#background_background_' -e '84s_foreground_#foreground_' \
+            -e '85s_foreground_#foreground_' -e '86s_background_#background_' \
+            -e '77s_#color_color_' -e '78s_#color_color_' \
+            -e '80s_#color_color_' -e '81s_#color_color_' \
+            -e '88s_color_#color_' -e '89s_color_#color_' \
+            -e '91s_color_#color_' -e '92s_color_#color_' \
+            -i "$TERMITE_CONFIG"
+    fi
+fi
+
+exit ${?}

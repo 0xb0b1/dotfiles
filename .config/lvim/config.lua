@@ -2,6 +2,10 @@ require("tailwindcss-colors").setup()
 
 require('nvim-ts-autotag').setup()
 
+require('rose-pine').setup({
+  dark_variant = 'moon'
+})
+
 vim.opt.termguicolors = true
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections.lualine_c = { "diff", "filename", "treesitter", "lsp",
@@ -10,8 +14,8 @@ lvim.builtin.lualine.sections.lualine_c = { "diff", "filename", "treesitter", "l
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "catppuccin-frappe"
---lvim.colorscheme = "onedarkpro"
+-- lvim.colorscheme = "catppuccin-frappe"
+lvim.colorscheme = "rose-pine"
 --lvim.lang.javascript.format_on_save = true
 --lvim.lang.typescript.format_on_save = true
 --lvim.lang.typescriptreact.format_on_save = true
@@ -120,7 +124,8 @@ code_actions.setup {
 -- Additional Plugins
 lvim.plugins = {
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
-  { "drewtempelmeyer/palenight.vim", },
+  { "rose-pine/neovim" },
+  { "shaunsingh/nord.nvim" },
   { "catppuccin/nvim" },
   {
     "phaazon/hop.nvim",
@@ -130,11 +135,7 @@ lvim.plugins = {
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   },
-  { "yashguptaz/calvera-dark.nvim" },
-  { "navarasu/onedark.nvim" },
-  { "Th3Whit3Wolf/one-nvim" },
   { "olimorris/onedarkpro.nvim" },
-  { "tiagovla/tokyodark.nvim" },
   { "themaxmarchuk/tailwindcss-colors.nvim" },
   { "styled-components/vim-styled-components" },
   {
