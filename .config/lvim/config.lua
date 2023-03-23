@@ -1,12 +1,52 @@
-require("tailwindcss-colors").setup()
-
-require('nvim-ts-autotag').setup()
-
 require('rose-pine').setup({
-  dark_variant = 'moon'
+  --- @usage 'auto'|'main'|'moon'|'dawn'
+  variant = 'auto',
+  --- @usage 'main'|'moon'|'dawn'
+  dark_variant = 'moon',
+  bold_vert_split = false,
+  dim_nc_background = false,
+  disable_background = false,
+  disable_float_background = false,
+  disable_italics = false,
+  --- @usage string hex value or named color from rosepinetheme.com/palette
+  groups = {
+    background = 'base',
+    background_nc = '_experimental_nc',
+    panel = 'surface',
+    panel_nc = 'base',
+    border = 'highlight_med',
+    comment = 'muted',
+    link = 'iris',
+    punctuation = 'subtle',
+    error = 'love',
+    hint = 'iris',
+    info = 'foam',
+    warn = 'gold',
+    headings = {
+      h1 = 'iris',
+      h2 = 'foam',
+      h3 = 'rose',
+      h4 = 'gold',
+      h5 = 'pine',
+      h6 = 'foam',
+    }
+    -- or set all headings at once
+    -- headings = 'subtle'
+  },
+  -- Change specific vim highlight groups
+  -- https://github.com/rose-pine/neovim/wiki/Recipes
+  highlight_groups = {
+    ColorColumn = { bg = 'rose' },
+    -- Blend colours against the "base" background
+    CursorLine = { bg = 'highlight_med', blend = 10 },
+    StatusLine = { fg = 'love', bg = 'love', blend = 10 }
+  }
 })
 
-vim.opt.termguicolors = true
+-- lvim.transparent_window = true
+
+vim.opt.guifont = "MonoLisa:h18"
+vim.opt.timeoutlen = 500
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections.lualine_c = { "diff", "filename", "treesitter", "lsp",
   "filetype", "diagnostics", "encoding", "spaces" }
@@ -14,8 +54,8 @@ lvim.builtin.lualine.sections.lualine_c = { "diff", "filename", "treesitter", "l
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
--- lvim.colorscheme = "catppuccin-frappe"
-lvim.colorscheme = "rose-pine"
+lvim.colorscheme = "catppuccin-frappe"
+-- lvim.colorscheme = "rose-pine"
 --lvim.lang.javascript.format_on_save = true
 --lvim.lang.typescript.format_on_save = true
 --lvim.lang.typescriptreact.format_on_save = true
@@ -44,7 +84,7 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
-lvim.builtin.nvimtree.setup.view.width = 45
+lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.nvimtree.setup.auto_reload_on_write = true
 lvim.builtin.nvimtree.setup.renderer.indent_markers.enable = true
 
@@ -123,10 +163,11 @@ code_actions.setup {
 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/trouble.nvim", cmd = "TroubleToggle", },
+  { "folke/trouble.nvim",           cmd = "TroubleToggle", },
   { "rose-pine/neovim" },
-  { "shaunsingh/nord.nvim" },
   { "catppuccin/nvim" },
+  { "drewtempelmeyer/palenight.vim" },
+  { "arcticicestudio/nord-vim" },
   {
     "phaazon/hop.nvim",
     branch = 'v2', -- optional but strongly recommended
@@ -153,7 +194,7 @@ lvim.plugins = {
     event = "BufRead",
     config = function()
       require("numb").setup {
-        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_numbers = true,    -- Enable 'number' for the window while peeking
         show_cursorline = true, -- Enable 'cursorline' for the window while peeking
       }
     end,
@@ -186,25 +227,32 @@ lvim.plugins = {
         -- All these keys will be mapped to their corresponding default scrolling animation
         mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
           '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
         use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
         cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil, -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil, -- Function to run after the scrolling animation ends
+        easing_function = nil,       -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,             -- Function to run after the scrolling animation ends
       })
     end
   },
   {
     "romgrk/nvim-treesitter-context",
     config = function()
+      -- require('nvim-treesitter-.configs').setup {
+      --   rainbow = {
+      --     enable = true
+      --     colors = require('ayu').rainbow_colors()
+      --   }
+      -- }
       require("treesitter-context").setup {
-        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
         throttle = true, -- Throttles plugin updates (may improve performance)
-        max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-        patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+        max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
+        patterns = {
+          -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
           -- For all filetypes
           -- Note that setting an entry here replaces all other patterns for this entry.
           -- By setting the 'default' entry below, you can control which nodes you want to
