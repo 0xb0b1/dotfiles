@@ -40,7 +40,7 @@
     <primaryMonitor>1</primaryMonitor>
   </placement>
   <theme>
-    <name>Fleon</name>
+    <name>Nordic</name>
     <!-- Available characters are NDSLIMC, each can occur at most once.
          N: window icon
          L: window label (AKA title)
@@ -49,7 +49,7 @@
          C: close
          S: shade (roll up/down)
          D: omnipresent (on all desktops) -->
-    <titleLayout>LIMC</titleLayout>
+    <titleLayout>CIML</titleLayout>
     <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
@@ -109,7 +109,8 @@
   </theme>
   <!-- This stuff is only used at startup, pagers allow you to change them during a session
        these are default values to use when other ones are not already set by other applications,
-       or saved in your session use obconf if you want to change these without having to log out and back in. -->
+       or saved in your session use obconf if you want to change these without having to log out and back
+  in. -->
   <desktops>
     <number>8</number>
     <firstdesk>1</firstdesk>
@@ -145,7 +146,8 @@
       <y>10</y>
     </popupFixedPosition>
   </resize>
-  <!-- You can reserve a portion of your screen where windows will not cover when they are maximized,
+  <!-- You can reserve a portion of your screen where windows will not cover when they are
+  maximized,
        or when they are initially placed. Many programs reserve space automatically,
        but you can use this in other cases. -->
   <margins>
@@ -180,6 +182,16 @@
         <command>~/.scripts/change-brightness.sh +</command>
       </action>
     </keybind>
+    <keybing key="W-u">
+      <action name="Execute">
+        <command>~/.scripts/change-layout-us</command>
+      </action>
+    </keybing>
+    <keybing key="W-i">
+      <action name="Execute">
+        <command>~/.scripts/change-layout-br</command>
+      </action>
+    </keybing>
     <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
         <command>~/.scripts/change-brightness.sh -</command>
@@ -429,16 +441,6 @@
         <command>~/.config/rofi/scripts/rofi-main.sh</command>
       </action>
     </keybind>
-    <keybind key="W-i">
-      <action name="Execute">
-        <command>~/.scripts/change-layout-br</command>
-      </action>
-    </keybind>
-    <keybind key="W-u">
-      <action name="Execute">
-        <command>~/.scripts/change-layout-us</command>
-      </action>
-    </keybind>
     <!-- Screenshots. -->
     <keybind key="Print">
       <action name="Execute">
@@ -489,7 +491,7 @@
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>termite</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">
@@ -508,7 +510,8 @@
     <dragThreshold>1</dragThreshold>
     <!-- In milliseconds (1000 = 1 second). -->
     <doubleClickTime>500</doubleClickTime>
-    <!-- Time before changing desktops when the pointer touches the edge of the screen while moving a window,
+    <!-- Time before changing desktops when the pointer touches the edge of the screen while moving
+    a window,
          in milliseconds (1000 = 1 second). Set this to 0 to disable warping. -->
     <screenEdgeWarpTime>400</screenEdgeWarpTime>
     <!-- Set this to TRUE to move the mouse pointer across the desktop when switching
@@ -864,12 +867,16 @@
          but without the comments of course. You may use one or more of
          the name/class/role/title/type rules to specify windows to match.
 
-         You may set only one of name/class/role/title/type, or you may use more than one together to restrict
-         your matches. The name, class, role, and title use simple wildcard matching such as those used by a shell.
+         You may set only one of name/class/role/title/type, or you may use more than one together to
+    restrict
+         your matches. The name, class, role, and title use simple wildcard matching such as those used by a
+    shell.
          You can use * to match any characters and ? to match any single character.
          The type is one of: normal, dialog, splash, utility, menu, toolbar, dock, or desktop.
-         When multiple rules match a window, they will all be applied, in the order that they appear in this list.
-         Each rule element can be left out or set to 'default' to specify to not change that attribute of the window.
+         When multiple rules match a window, they will all be applied, in the order that they appear in this
+    list.
+         Each rule element can be left out or set to 'default' to specify to not change that attribute of
+    the window.
 
          <application name="the window's _OB_APP_NAME property (see obxprop)"
                      class="the window's _OB_APP_CLASS property (see obxprop)"
@@ -887,7 +894,8 @@
            <shade>no</shade>
 
            The position is only used if both an x and y coordinate are provided (and not set to 'default')
-           when force is "yes", then the window will be placed here even if it says you want it placed elsewhere.
+           when force is "yes", then the window will be placed here even if it says you want it placed
+    elsewhere.
            This is to override buggy applications who refuse to behave.
            <position force="no">
 
@@ -897,7 +905,8 @@
              <x>center</x>
              <y>200</y>
 
-             Specifies the monitor in a xinerama setup. 1 is the first head, or 'mouse' for wherever the mouse is.
+             Specifies the monitor in a xinerama setup. 1 is the first head, or 'mouse' for wherever the mouse
+    is.
              <monitor>1</monitor>
 
            </position>

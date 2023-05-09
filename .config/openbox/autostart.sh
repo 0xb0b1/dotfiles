@@ -14,7 +14,7 @@ exec >/dev/null 2>&1
 # https://gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html#:~:text=expand_aliases
 [ -z "$BASH" ] || shopt -s expand_aliases
 
-{ [ "$(joyd_launch_apps -g terminal)" = 'urxvtc' ] && urxvtd -f -q; } &
+{ [ "$(joyd_launch_apps -g terminal)" = 'termite' ] && termite -f -q; } &
 
 #{ pidof -s pulseaudio -q || pulseaudio --start --log-target=syslog; } &
 
@@ -22,6 +22,12 @@ joyd_toggle_mode apply
 joyd_tray_programs exec
 
 picom --experimental-backends -b
+
+xset s off
+xset -dpms
+xset r rate 584 69
+xrandr --output HDMI-A-0 --mode 2560x1080 --rate 74.99
+redshift -l 0.0.1:-99.0 -g 0.8 -t 4000:4000 -r randr
 
 if [ -x "$(command -v lxpolkit)" ]; then
     lxpolkit &
