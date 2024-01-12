@@ -1,8 +1,13 @@
 super + c
-    code
+    wezterm -e nvim
 
 super + alt + s
-    maim -s $HOME/Images/print.jpg
+   sh $HOME/.config/cat-configs/bin/utilities/screenshot.sh --menu
+
+super + l
+  sh $HOME/.scripts/change-layout-br
+super + u
+  sh $HOME/.scripts/change-layout-us
 
 XF86AudioRaiseVolume 
     pamixer -i 5
@@ -26,16 +31,19 @@ super + a
     brave
 
 super + p
-    termite -e ranger
+    wezterm -e ranger
 
 super + Return
-    termite -e tmux
+    wezterm
+
+super + r 
+  sh ~/.config/cat-configs/bin/utilities/menu/launcher.sh drun
 
 super + d
-    rofi -show run -matching fuzzy -font "Exo 2 12" -padding 60 -width 35 -lines 6 -click-to-exit rofi -color-normal "#272727,#EEF6F6,#272727,#FFFFFF,#000000" -color-window "#272727,#FFFFFF,#272727" -hide-scrollbar
+  sh ~/.config/cat-configs/bin/utilities/menu/launcher.sh run
 
 super + w
-    rofi -show window -matching fuzzy -font "Exo 2 12" -padding 60 -width 35 -lines 6 -click-to-exit rofi -color-normal "#272727,#EEF6F6,#272727,#FFFFFF,#000000" -color-window "#272727,#FFFFFF,#272727" -hide-scrollbar
+  sh ~/.config/cat-configs/bin/utilities/menu/launcher.sh window
 
 super + alt + q
     pkill -x polybar; bspc quit
