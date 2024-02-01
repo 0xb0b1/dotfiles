@@ -1,4 +1,3 @@
-# ![alt text](https://github.com/0xb0b1/dotfiles/blob/main/dotfiles.jpg)
 
 ![mock1](https://github.com/0xb0b1/dotfiles/blob/main/Screenshot_2024-02-01-04-50-45_3000x2560.png)
 
@@ -23,5 +22,6 @@
 - Mouse: **Viper Pro Gaming 411**
 - Headset: **SuperFrame + EDX Pro**
 
-# ![alt text](https://github.com/0xM4N/dotfiles/blob/main/Images/screenshot.png)  
+
+# ![alt text](https://github.com/0xb0b1/dotfiles/blob/main/dotfiles.jpg)
 
