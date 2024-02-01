@@ -9,8 +9,8 @@
 - Browser: **Chromium/Vivaldi**
 - Terminal: **Wezterm**
 - Terminal Font: **0xProto Nerd Font/SF Mono**
-- Theme/Colorscheme: **oceanic-next**
-- Gtk Theme: **Catppuccin-Mocha-Standard-Red-Dark**
+- Theme/Colorscheme: **tokyonight-storm**
+- Gtk Theme: **Tokyonight-Storm-B**
 - Icons: **candy-icons**
 
 ##  ➤ Hardware:
