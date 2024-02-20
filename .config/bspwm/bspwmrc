@@ -5,20 +5,21 @@ xset -dpms
 xset r rate 584 69
 xsetroot -def &
 
-$HOME/.config/polybar/launch.sh &
+$HOME/.config/bspwm/themes/onedark/polybar/launch.sh &
 sxhkd &
+parcellite &
 redshift -l 0.01:-99.0 -g 0.9 -t 5200:3500 -r randr &
-hsetroot -fill .config/wallpaper/covers.png &
+hsetroot -fill .wallpapers/mechanical/macchiato.png &
 setxkbmap -layout br &
 xrdb -load .Xresources &
-xrandr --output DP-0 --primary --mode 1920x1080 --rate 165.00 --output HDMI-0 --mode 2560x1080 --rate 74.99 --right-of DP-0
+xrandr --output DP-4 --primary --mode 1920x1080 --rate 165.00 --output HDMI-0 --mode 2560x1080 --rate 74.99 --right-of DP-4 --rotate right
 
 xsetroot -cursor_name left_ptr &
 picom &
 
 xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
-bspc config top_padding 	      1
+# bspc config top_padding 	      1
 bspc config bottom_padding 	    1
 bspc config left_padding 	      1
 bspc config right_padding 	    1 
@@ -43,6 +44,7 @@ bspc rule -a TelegramDesktop desktop=^3
 # bspc rule -a Brave desktop=^2 state=full
 bspc rule -a Discord desktop=^4 state=floating
 bspc rule -a Anki desktop=^5
+bspc rule -a Calculator state=floating
 bspc rule -a Sxiv state=floating follow=on
 bspc rule -a MPlayer state=floating follow=on
 bspc rule -a mpv state=floating follow=on
