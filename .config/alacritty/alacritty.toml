@@ -1,0 +1,131 @@
+# TokyoNight Alacritty Colors
+# Default colors
+# [colors.primary]
+# background = '#222436'
+# foreground = '#c8d3f5'
+#
+#[colors.cursor]
+#cursor = '#c8d3f5'
+#text = '#222436'
+
+# Normal colors
+# [colors.normal]
+# black = '#1b1d2b'
+# red = '#ff757f'
+# green = '#c3e88d'
+# yellow = '#ffc777'
+# blue = '#82aaff'
+# magenta = '#c099ff'
+# cyan = '#86e1fc'
+# white = '#828bb8'
+#
+# # Bright colors
+# [colors.bright]
+# black = '#444a73'
+# red = '#ff757f'
+# green = '#c3e88d'
+# yellow = '#ffc777'
+# blue = '#82aaff'
+# magenta = '#c099ff'
+# cyan = '#86e1fc'
+# white = '#c8d3f5'
+#
+# # Indexed Colors
+# [[colors.indexed_colors]]
+# index = 16
+# color = '#ff966c'
+#
+# [[colors.indexed_colors]]
+# index = 17
+# color = '#c53b53'
+#
+
+[colors.primary]
+background = "#24273A"
+foreground = "#CAD3F5"
+dim_foreground = "#CAD3F5"
+bright_foreground = "#CAD3F5"
+
+[colors.cursor]
+text = "#24273A"
+cursor = "#F4DBD6"
+
+[colors.vi_mode_cursor]
+text = "#24273A"
+cursor = "#B7BDF8"
+
+[colors.search.matches]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[colors.search.focused_match]
+foreground = "#24273A"
+background = "#A6DA95"
+
+[colors.footer_bar]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[colors.hints.start]
+foreground = "#24273A"
+background = "#EED49F"
+
+[colors.hints.end]
+foreground = "#24273A"
+background = "#A5ADCB"
+
+[colors.selection]
+text = "#24273A"
+background = "#F4DBD6"
+
+[colors.normal]
+black = "#494D64"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#B8C0E0"
+
+[colors.bright]
+black = "#5B6078"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#A5ADCB"
+
+[colors.dim]
+black = "#494D64"
+red = "#ED8796"
+green = "#A6DA95"
+yellow = "#EED49F"
+blue = "#8AADF4"
+magenta = "#F5BDE6"
+cyan = "#8BD5CA"
+white = "#B8C0E0"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#F5A97F"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#F4DBD6"
+
+[window]
+opacity = 0.95
+
+[font]
+# normal = {family = "MonaspiceAr Nerd Font", style = "Regular"}
+normal = {family = "OverpassM Nerd Font", style = "Regular"}
+bold = {family = "OverpassM Nerd Font", style = "Bold"}
+italic = {family = "OverpassM Nerd Font", style = "Italic"}
+bold_italic = {family = "OverpassM Nerd Font", style = "Bold Italic"}
+size = 12.5
+builtin_box_drawing = true
+# size = 14
+offset = { x = 0, y = 5}
