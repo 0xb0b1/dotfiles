@@ -13,34 +13,33 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
--- config.color_scheme = 'Catppuccin Macchiato'
+-- config.color_scheme = 'Catppuccin Frappe'
 config.color_scheme = 'tokyonight_moon'
 -- config.color_scheme = 'Oceanic-Next'
 
--- config.font = wezterm.font('ComicShannsMono Nerd Font', { weight = 'DemiBold' })
--- config.font = wezterm.font('Operator Mono Lig', { weight = 'DemiBold' })
--- config.font = wezterm.font('MonoLisa', { weight = 'DemiBold' })
-config.font = wezterm.font('MonoLisa')
--- config.font = wezterm.font('PT Mono')
+-- config.font = wezterm.font('SFMono Nerd Font Mono', { weight = 'DemiBold' })
+-- config.font = wezterm.font('GeistMono Nerd Font Propo')
+-- config.font = wezterm.font('JetBrainsMono Nerd Font')
 -- config.font = wezterm.font('SFMono Nerd Font Mono')
--- config.font = wezterm.font('Liga SFMono Nerd Font')
--- config.font = wezterm.font('The Mix iScript')
+config.font = wezterm.font('DankMono Nerd Font', { weight = 'Regular'})
+-- config.font = wezterm.font('', { weight = 'Regular'})
 config.dpi = 96.0
 
-config.window_background_opacity = 0.975
+config.window_background_opacity = 0.987
 config.macos_window_background_blur = 90
 
--- config.font_size = 14
-config.line_height = 1.45
+config.font_size = 14
+config.line_height = 1.5
 config.font_shaper = "Harfbuzz"
 
 config.enable_tab_bar = false
 
+
 config.window_padding = {
-  top = 20,
-  left = 15,
-  right = 15,
-  bottom = 5
+  top = 0,
+  left = 0,
+  right = 0,
+  bottom = 0
 }
 
 -- and finally, return the configuration to wezterm
