@@ -1,0 +1,4 @@
+return {
+  "IogaMaster/neocord",
+  opts = {},
+}
