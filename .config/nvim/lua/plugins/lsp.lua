@@ -8,7 +8,7 @@ return {
           gopls = {
             gofumpt = true,
             codelenses = {
-              gc_details = false,
+              gc_details = true,
               generate = true,
               regenerate_cgo = true,
               run_govulncheck = true,

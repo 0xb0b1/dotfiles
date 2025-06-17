@@ -1,8 +1,8 @@
 super + c
-    wezterm -e nvim
+    kitty -e nvim
 
 super + alt + s
-   sh $HOME/.config/cat-configs/bin/utilities/screenshot.sh --menu
+   sh $HOME/.config/bspwm/scripts/rofi_screenshot
 
 super + l
   sh $HOME/.scripts/change-layout-br
@@ -31,19 +31,19 @@ super + a
     brave
 
 super + p
-    wezterm -e ranger
+    kitty -e ranger
 
 super + Return
-    wezterm
+    kitty
 
 super + r 
-  sh ~/.config/cat-configs/bin/utilities/menu/launcher.sh drun
+  sh ~/.config/rofi/scripts/rofi-main.sh
 
 super + d
-  sh ~/.config/cat-configs/bin/utilities/menu/launcher.sh run
+  sh ~/.config/rofi/scripts/rofi-main.sh
 
 super + w
-  sh ~/.config/cat-configs/bin/utilities/menu/launcher.sh window
+  sh ~/.config/cat-configs/bin/utilities/menu/launcher.sh run
 
 super + alt + q
     pkill -x polybar; bspc quit

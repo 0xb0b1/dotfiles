@@ -2,41 +2,44 @@
 
 xset s off
 xset -dpms
-xset r rate 584 69
+xset r rate 484 69
 xsetroot -def &
 
 $HOME/.config/bspwm/themes/onedark/polybar/launch.sh &
 sxhkd &
 parcellite &
-redshift -l 0.01:-99.0 -g 0.9 -t 5200:3500 -r randr &
-hsetroot -fill .wallpapers/mechanical/macchiato.png &
-setxkbmap -layout br &
+setxkbmap -option caps:escape
+redshift -l 0.01:-99.0 -g 0.8 -t 5200:5200 -r randr &
+# hsetroot -fill .wallpapers/mechanical/macchiato.png &
+nitrogen --set-zoom-fill workspaces/tmp/Configs/Wallpapers/RosePine/astronaut_fields.jpg
+xrandr --output DP-1 --mode 1920x1080 --rate 120.00
+# xrandr --output DP-1 --mode 2560x1080 --rate 74.99
 xrdb -load .Xresources &
-xrandr --output DP-4 --primary --mode 1920x1080 --rate 165.00 --output HDMI-0 --mode 2560x1080 --rate 74.99 --right-of DP-4 --rotate right
+# xrandr --output DP-4 --primary --mode 1920x1080 --rate 165.00 --output HDMI-0 --mode 2560x1080 --rate 74.99 --right-of DP-4 --rotate right
 
 xsetroot -cursor_name left_ptr &
 picom &
 
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # bspc config top_padding 	      1
-bspc config bottom_padding 	    1
-bspc config left_padding 	      1
-bspc config right_padding 	    1 
-bspc config border_width        0
-bspc config window_gap          5
+bspc config bottom_padding 1
+bspc config left_padding 1
+bspc config right_padding 1
+bspc config border_width 2
+bspc config window_gap 5
 
-bspc monitor -d 1 2 3 4 5
+bspc monitor -d 1 2 3 4 5 6 7 8
 
-bspc config split_ratio             0.50
-bspc config borderless_monocle      true
-bspc config gapless_monocle         true
-bspc config pointer_follows_focus   false
-bspc config focus_follows_pointer   true
-bspc config center_pseudo_tiled     true
+bspc config split_ratio 0.50
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config pointer_follows_focus false
+bspc config focus_follows_pointer true
+bspc config center_pseudo_tiled true
 
-bspc config focused_border_color  "#FFFFFF"
-bspc config normal_border_color   "#272727"
+bspc config focused_border_color "#24283b"
+bspc config normal_border_color "#272727"
 bspc config presel_feedback_color "#FF0000"
 
 #bspc desktop ^1 -l monocle
@@ -54,4 +57,3 @@ bspc rule -a wezterm state=floating
 bspc config presel_feedback_color \#aaaaaa
 
 notify-send "Notification" "Bspwmrc Loaded"
-

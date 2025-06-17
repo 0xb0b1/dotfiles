@@ -74,6 +74,8 @@ local function codeKeymap()
     require("treesitter-context").go_to_context(vim.v.count1)
   end, { silent = true })
   key.normal("<leader>cf", vim.lsp.buf.format, { desc = "[c]ode format" })
+  vim.keymap.set({ "n", "v" }, "<Leader>c4", "<cmd>CodeCompanionChat<cr>", { desc = "Claude 4 Chat" })
+  vim.keymap.set({ "n", "v" }, "<Leader>c5", "<cmd>CodeCompanionActions<cr>", { desc = "Claude 4 Actions" })
 end
 
 local function transformKeymap()
@@ -102,7 +104,7 @@ local function sessionKeymap()
   key.normal("\\", "<CMD>Oil --float<CR>", { desc = "oil.nvim" })
   key.normal("<leader>sf", "<CMD>Oil --float<CR>", { desc = "oil.nvim" })
   key.normal("<leader>so", "<CMD>Oil --float<CR>", { desc = "[o]il.nvim" })
-  key.normal("<leader>sr", require("persistence").load, { desc = "[r]estore session" })
+  key.normal("<leader>sar", require("persistence").load, { desc = "[r]estore session" })
 end
 
 local addKeymaps = function()
@@ -174,4 +176,3 @@ table.insert(M, {
 })
 
 return M
-

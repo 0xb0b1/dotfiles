@@ -7,8 +7,6 @@
 # bspwm directory
 DIR="$HOME/.config/bspwm"
 
-CONFIG="$DIR/alacritty/alacritty.toml"
-
-alacritty --class 'Music,Music' --config-file "$CONFIG" \
-		  -o window.dimensions.columns=105 window.dimensions.lines=22 \
-		  -e ~/.ncmpcpp/scripts/ncmpcpp-art
+alacritty --class 'Music,Music' \
+  -o window.dimensions.columns=105 window.dimensions.lines=22 \
+  -e ~/.ncmpcpp/scripts/ncmpcpp-art

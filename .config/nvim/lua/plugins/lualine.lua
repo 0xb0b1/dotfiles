@@ -2,54 +2,15 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
-    local colors = {
-      blue = "#89b4fa",
-      teal = "#94e2d5",
-      green = "#a6e3a1",
-      yellow = "#f9e2af",
-      peach = "#fab387",
-      red = "#f38ba8",
-      mauve = "#cba6f7",
-      surface0 = "#313244",
-      base = "#1e1e2e",
-    }
-    local theme = {
-      normal = {
-        a = { fg = colors.base, bg = colors.blue, gui = "bold" },
-        b = { fg = colors.base, bg = colors.teal },
-        c = { fg = colors.base, bg = colors.green },
-      },
-      insert = {
-        a = { fg = colors.base, bg = colors.mauve, gui = "bold" },
-        b = { fg = colors.base, bg = colors.peach },
-        c = { fg = colors.base, bg = colors.yellow },
-      },
-      visual = {
-        a = { fg = colors.base, bg = colors.red, gui = "bold" },
-        b = { fg = colors.base, bg = colors.teal },
-        c = { fg = colors.base, bg = colors.surface0 },
-      },
-      replace = {
-        a = { fg = colors.base, bg = colors.yellow, gui = "bold" },
-        b = { fg = colors.base, bg = colors.red },
-        c = { fg = colors.base, bg = colors.surface0 },
-      },
-      inactive = {
-        a = { fg = colors.base, bg = colors.surface0 },
-        b = { fg = colors.base, bg = colors.surface0 },
-        c = { fg = colors.base, bg = colors.surface0 },
-      },
-    }
     return {
       options = {
         theme = "catppuccin",
         -- component_separators = { left = "", right = "" },
-        -- section_separators = { left = "", right = "" },
-        component_separators = { left = "", right = "" },
+        component_separators = "",
         section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
         lualine_b = { "branch" },
         lualine_c = {
           {
@@ -70,14 +31,16 @@ return {
               unnamed = "[No Name]",
             },
             fmt = function(str)
-              local parent_dir = vim.fn.fnamemodify(str, ":h")
+              local parent_dir = vim.fn.fnamemodify(str, ":a")
               local filename = vim.fn.fnamemodify(str, ":t")
               return parent_dir .. "/" .. filename
             end,
           },
         },
-        lualine_x = { "filetype", "tabs", "coedium" },
-        lualine_z = { "location" },
+        lualine_x = { "filetype", "tabs", "progress" },
+        lualine_z = {
+          { "location", separator = { right = "" }, left_padding = 2 },
+        },
       },
       inactive_sections = {
         lualine_a = {},
@@ -87,7 +50,9 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
-      tabline = {},
+      tabline = {
+        lualine_a = {}, -- shows open buffers
+      },
       extensions = {},
     }
   end,
