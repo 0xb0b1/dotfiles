@@ -1,19 +1,20 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# eval "$(oh-my-posh init zsh)"
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
+export MANPAGER='nvim +Man!'
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="ar-round"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="edvardm"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -24,17 +25,16 @@ ZSH_THEME="ar-round"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -46,6 +46,9 @@ ZSH_THEME="ar-round"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -65,31 +68,12 @@ ZSH_THEME="ar-round"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    archlinux
-    tmux
-    colorize
-    sudo
-    git
-    git-prompt
-    github
-    man
-    colored-man-pages
-    vi-mode
-    vim-interaction
-    node
-    yarn
-    npm
-    npx
-    nvm
-)
+plugins=(git archlinux aws branch command-not-found docker docker-compose gh golang node nodenv nvm npm postgres redis-cli yarn vi-mode)
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-setopt INC_APPEND_HISTORY
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -103,64 +87,57 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
-# Aliases
-#alias ls="colorls --sd -A"
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-PRIV="sudo"
+alias vi="nvim"
 
-alias c="clear"
-alias q="exit"
-alias hd="hexdump -C"
-alias default-apps="clear && ~/.scripts/default-apps/launch && ~/.scripts/default-apps/launch -e"
-alias pacrem="$PRIV pacman -Rcns"
-alias yayupd="yay -Sy"
-alias yayupg="yay -Syu"
-alias emergeins="$PRIV emerge -av"
-alias emergeinmask="$PRIV emerge -av --autounmask=y --autounmask-write"
-alias emergepv="$PRIV emerge -pv"
-alias emergeupd="$PRIV emaint -a sync"
-alias emergeupg="$PRIV emerge -av --update --deep --changed-use @world"
-alias emergedepc="$PRIV emerge --depclean -av"
-alias emergenuse="$PRIV emerge -av --update --newuse --deep @world"
-alias emergecuse="$PRIV emerge -av --update --changed-use --deep @world"
-alias ecleandist="$PRIV eclean-dist --deep"
-alias ecleanpkg="$PRIV eclean-pkg --deep"
-alias ecleankern="$PRIV eclean-kernel -n 3"
-alias rc-service="$PRIV rc-service"
-alias rc-update="$PRIV rc-update"
-alias pingoogle="ping 8.8.8.8"
-alias trimall="$PRIV fstrim -va"
-alias nanosu="$PRIV nano"
-alias nvimsu="$PRIV nvim"
-alias refram="$PRIV bash -c \"sync; echo 3 > /proc/sys/vm/drop_caches\""
+alias python="/home/vicente/.pyenv/versions/3.9.13/bin/python3"
+alias python3="/home/vicente/.pyenv/versions/3.9.13/bin/python3"
 
-# Color toys aliases
-alias 256colors2="~/.color-toys/256colors2.pl"
-alias bloks="~/.color-toys/bloks"
-alias colortest="~/.color-toys/colortest"
-alias colortest-slim="~/.color-toys/colortest-slim"
-alias colorview="~/.color-toys/colorview"
-alias colorbars="~/.color-toys/colorbars"
-alias panes="~/.color-toys/panes"
-alias pipes1="~/.color-toys/pipes1"
-alias pipes2="~/.color-toys/pipes2"
-alias pipes2-slim="~/.color-toys/pipes2-slim"
+alias rustc="rustc -j4"
 
-# GPG Dialog
-export GPG_TTY=$(tty)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# cargo bin path
-export PATH="$HOME./.cargo/bin:$PATH"
+# pnpm
+export PNPM_HOME="/home/vicente/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export NODE_OPTIONS=--max-old-space-size=1536
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+
+# Added by nitric binary installer
+export PATH="$HOME/.nitric/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+eval "$(pyenv virtualenv-init -)"
+
