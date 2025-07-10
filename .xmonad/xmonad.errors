@@ -1,0 +1,36 @@
+$ ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -dynamic -v0 -outputdir /home/vicente/.xmonad/build-x86_64-linux -o /home/vicente/.xmonad/xmonad-x86_64-linux
+
+xmonad.hs:165:19: error:
+    Ambiguous occurrence ‘Grid’
+    It could refer to
+       either ‘XMonad.Layout.Grid.Grid’,
+              imported from ‘XMonad.Layout.Grid’ at xmonad.hs:22:1-25
+           or ‘XMonad.Layout.GridVariants.Grid’,
+              imported from ‘XMonad.Layout.GridVariants’ at xmonad.hs:23:36-45
+    |
+165 |     grid        = Grid                                 -- Auto grid layout
+    |                   ^^^^
+
+xmonad.hs:167:29: error:
+    Ambiguous occurrence ‘CW’
+    It could refer to
+       either ‘XMonad.Layout.Spiral.CW’,
+              imported from ‘XMonad.Layout.Spiral’ at xmonad.hs:28:1-27
+           or ‘XMonad.Hooks.ManageHelpers.CW’,
+              imported from ‘XMonad.Hooks.ManageHelpers’ at xmonad.hs:42:1-33
+           or ‘XMonad.Layout.Dwindle.CW’,
+              imported from ‘XMonad.Layout.Dwindle’ at xmonad.hs:29:1-28
+    |
+167 |     dwindle     = Dwindle R CW 1.1 1.1                -- Fibonacci-like dwindle
+    |                             ^^
+
+xmonad.hs:225:56: error:
+    Ambiguous occurrence ‘float’
+    It could refer to
+       either ‘XMonad.float’,
+              imported from ‘XMonad’ at xmonad.hs:1:1-13
+              (and originally defined in ‘XMonad.Operations’)
+           or ‘Main.float’, defined at xmonad.hs:62:1
+    |
+225 |     , ((mod4Mask .|. shiftMask, xK_space), withFocused float)
+    |                                                        ^^^^^
