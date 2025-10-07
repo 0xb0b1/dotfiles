@@ -1,4 +1,0 @@
-
-return {
-  "giusgad/pets.nvim"
-}
