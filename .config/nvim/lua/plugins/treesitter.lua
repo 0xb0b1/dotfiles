@@ -31,6 +31,7 @@ return {
         "gomod",
         "gowork",
         "gosum",
+        "python",
       },
       highlight = { enable = true, disable = check_file_size },
       indent = { enable = true },

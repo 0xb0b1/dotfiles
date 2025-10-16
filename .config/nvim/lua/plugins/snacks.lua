@@ -89,6 +89,10 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     picker = {
+      auto_close = true,
+      jump = {
+        close = true,
+      },
       sources = {
         explorer = {
           layout = {
@@ -113,7 +117,7 @@ return {
               reverse = false,
               layout = {
                 box = "vertical",
-                backdrop = true,
+                backdrop = 0.8,
                 height = 0.9,
                 width = 0.9,
                 border = "rounded",

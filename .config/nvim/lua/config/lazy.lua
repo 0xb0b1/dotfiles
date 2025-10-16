@@ -27,13 +27,16 @@ require("lazy").setup({
 
     { import = "lazyvim.plugins.extras.util.dot" },
 
-    { import = "lazyvim.plugins.extras.ai.copilot-chat" },
+    -- { import = "lazyvim.plugins.extras.ai.copilot-chat" },
     -- { import = "lazyvim.plugins.extras.ai.copilot" },
 
     { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.dap.core" }, -- Debugging
+    { import = "lazyvim.plugins.extras.test.core" }, -- Testing with neotest
 
     { import = "lazyvim.plugins.extras.editor.snacks_picker" },
 

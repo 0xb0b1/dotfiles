@@ -24,7 +24,7 @@ return {
   {
     "axelvc/template-string.nvim",
     opts = {
-      filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact"},
+      filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
       remove_template_string = true,
       restore_quotes = {
         normal = [[']],
@@ -32,11 +32,11 @@ return {
       },
     },
     event = "InsertEnter",
-    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact", "go", "python"},
+    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact", "go", "python" },
   },
-  { "echasnovski/mini.pairs", version = false, opts = {} },
+  { "nvim-mini/mini.pairs", version = false, opts = {} },
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     config = function()
       local treesitter = require("mini.ai").gen_spec.treesitter

@@ -31,7 +31,7 @@ return {
               unnamed = "[No Name]",
             },
             fmt = function(str)
-              local parent_dir = vim.fn.fnamemodify(str, ":a")
+              local parent_dir = vim.fn.fnamemodify(str, ":h")
               local filename = vim.fn.fnamemodify(str, ":t")
               return parent_dir .. "/" .. filename
             end,
@@ -49,9 +49,6 @@ return {
         lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {},
-      },
-      tabline = {
-        lualine_a = {}, -- shows open buffers
       },
       extensions = {},
     }

@@ -1,7 +1,3 @@
-if true then
-  return {}
-end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Mason plugins
 
 ---@type LazySpec
@@ -20,14 +16,17 @@ return {
       },
     },
   },
-  -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
+  -- Ensure additional tools are installed via Mason
   {
-    "jay-babu/mason-null-ls.nvim",
-    -- overrides `require("mason-null-ls").setup(...)`
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
-        -- add more arguments for adding more null-ls sources
+        "golangci-lint",
+        "gofumpt",
+        "goimports",
+        "gomodifytags",
+        "impl",
       },
     },
   },
@@ -37,7 +36,8 @@ return {
     opts = {
       ensure_installed = {
         "python",
-        "gopls",
+        "delve",
+        "js-debug-adapter",
         -- add more arguments for adding more debuggers
       },
     },

@@ -2,7 +2,33 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      pyright = {},
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "basic",
+              autoImportCompletions = true,
+              diagnosticSeverityOverrides = {
+                reportUnusedImport = "warning",
+                reportUnusedVariable = "warning",
+              },
+            },
+          },
+        },
+      },
+      vtsls = {
+        settings = {
+          typescript = {
+            inlayHints = {
+              parameterNames = { enabled = "all" },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+            },
+          },
+        },
+      },
       gopls = {
         settings = {
           gopls = {
