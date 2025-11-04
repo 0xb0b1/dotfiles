@@ -1,8 +1,6 @@
 
 ![mock1](https://github.com/0xb0b1/dotfiles/blob/main/shot.png)
 
-![mock1](https://github.com/0xb0b1/dotfiles/blob/main/keyboard.jpeg)
-
 ##  ➤ System:
 
 - OS: **Manjaro Linux**
@@ -23,6 +21,8 @@
 - Keyboard: **Sofle v2 wireless**
 - Mouse: **Logitech G305**
 - Headset: **Logitech G435**
+
+![mock1](https://github.com/0xb0b1/dotfiles/blob/main/keyboard.jpeg)
 
 
 # ![alt text](https://github.com/0xb0b1/dotfiles/blob/main/dotfiles.jpg)
