@@ -1,5 +1,5 @@
 
-![mock1](https://github.com/0xb0b1/dotfiles/blob/main/Screenshot_2024-02-01-04-50-45_3000x2560.png)
+![mock1](https://github.com/0xb0b1/dotfiles/blob/main/shot.png)
 
 ![mock1](https://github.com/0xb0b1/dotfiles/blob/main/keyboard.jpeg)
 
