@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Get workspace info from xmonad via xdotool
+# This script generates eww-compatible workspace buttons
+
+WORKSPACES=(1 2 3 4 5 6 7 8 9)
+
+# Get current workspace
+CURRENT=$(xdotool get_desktop 2>/dev/null || echo "0")
+CURRENT=$((CURRENT + 1))
+
+# Get list of workspaces with windows
+declare -A OCCUPIED
+while read -r ws; do
+    OCCUPIED[$ws]=1
+done < <(wmctrl -l 2>/dev/null | awk '{print $2}' | sort -u | while read n; do echo $((n + 1)); done)
+
+# Generate buttons
+OUTPUT="(box :class \"workspaces\" :orientation \"h\" :space-evenly false :halign \"start\""
+
+for ws in "${WORKSPACES[@]}"; do
+    if [[ $ws -eq $CURRENT ]]; then
+        CLASS="active"
+    elif [[ -n "${OCCUPIED[$ws]}" ]]; then
+        CLASS="occupied"
+    else
+        CLASS=""
+    fi
+
+    OUTPUT+=" (button :class \"$CLASS\" :onclick \"xdotool set_desktop $((ws - 1))\" \"$ws\")"
+done
+
+OUTPUT+=")"
+
+echo "$OUTPUT"

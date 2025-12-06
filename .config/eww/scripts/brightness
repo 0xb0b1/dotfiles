@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+get_brightness() {
+    if command -v xbacklight &>/dev/null; then
+        xbacklight -get | cut -d'.' -f1
+    elif command -v brightnessctl &>/dev/null; then
+        brightnessctl -m | cut -d',' -f4 | tr -d '%'
+    else
+        echo "100"
+    fi
+}
+
+case "$1" in
+    get)
+        get_brightness
+        ;;
+    up)
+        xbacklight -inc 5 2>/dev/null || brightnessctl set +5% 2>/dev/null
+        ;;
+    down)
+        xbacklight -dec 5 2>/dev/null || brightnessctl set 5%- 2>/dev/null
+        ;;
+esac

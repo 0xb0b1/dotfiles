@@ -1,0 +1,411 @@
+;; ============================================================================
+;; EWW Configuration - Catppuccin Frappe Theme
+;; For XMonad integration
+;; ============================================================================
+
+;; ============================================================================
+;; VARIABLES
+;; ============================================================================
+
+;; Time & Date
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll date :interval "60s" "date '+%a, %b %d'")
+(defpoll date_full :interval "60s" "date '+%A, %B %d, %Y'")
+
+;; System Info
+(defpoll cpu :interval "2s" :initial "0" "~/.config/eww/scripts/sys-info cpu")
+(defpoll ram :interval "2s" :initial "0" "~/.config/eww/scripts/sys-info ram")
+(defpoll disk :interval "30s" :initial "0" "~/.config/eww/scripts/sys-info disk")
+(defpoll temp :interval "5s" :initial "0" "~/.config/eww/scripts/sys-info temp")
+
+;; Volume & Brightness (using tint2 scripts)
+(defpoll volume :interval "0.5s" :initial "50%" "~/.config/tint2/executor/volume.sh percent")
+(defpoll volume_icon :interval "0.5s" :initial "" "~/.config/tint2/executor/volume.sh icon")
+(defpoll brightness :interval "1s" :initial "100" "~/.config/eww/scripts/brightness get")
+
+;; Network (using tint2 scripts)
+(defpoll network_icon :interval "5s" :initial "" "~/.config/tint2/executor/network.sh icon")
+(defpoll network_status :interval "5s" :initial "Checking..." "~/.config/tint2/executor/network.sh status")
+
+;; Music
+(defpoll music_title :interval "2s" :initial "" "~/.config/eww/scripts/music title")
+(defpoll music_artist :interval "2s" :initial "" "~/.config/eww/scripts/music artist")
+(defpoll music_status :interval "1s" :initial "Stopped" "~/.config/eww/scripts/music status")
+(defpoll music_icon :interval "1s" :initial "󰐊" "~/.config/eww/scripts/music icon")
+
+;; Workspaces & Layout (XMonad)
+(defpoll workspaces :interval "0.2s" :initial "(box)" "~/.config/eww/scripts/workspaces")
+(defpoll current_layout :interval "0.5s" :initial "󰯋" "~/.config/eww/scripts/layout icon")
+(defpoll layout_name :interval "0.5s" :initial "tall" "~/.config/eww/scripts/layout name")
+
+;; ============================================================================
+;; WIDGETS
+;; ============================================================================
+
+;; Logo/Menu Button
+(defwidget logo []
+  (button :class "logo"
+          :onclick "~/.config/rofi/scripts/rofi-main.sh &"
+          "󰣇"))
+
+;; Workspaces
+(defwidget workspaces_widget []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+    (literal :content workspaces)))
+
+;; Layout Indicator
+(defwidget layout []
+  (button :class "layout"
+          :onclick "xdotool key super+space"
+          :tooltip "Layout: ${layout_name}"
+    current_layout))
+
+;; Clock Widget
+(defwidget clock []
+  (eventbox :onclick "eww open --toggle calendar"
+    (box :class "clock"
+         :orientation "h"
+         :space-evenly false
+         :tooltip date_full
+      (label :class "clock-icon" :text "󰥔")
+      (label :class "time" :text time))))
+
+;; Date Widget
+(defwidget date_widget []
+  (eventbox :onclick "eww open --toggle calendar"
+    (box :class "date"
+         :orientation "h"
+         :space-evenly false
+         :tooltip date_full
+      (label :class "date-icon" :text "󰃭")
+      (label :class "date-text" :text date))))
+
+;; System Tray
+(defwidget systray_widget []
+  (box :class "systray"
+       :orientation "h"
+       :space-evenly false
+    (systray :class "tray"
+             :icon-size 18
+             :spacing 6)))
+
+;; System Info Area
+(defwidget system_info []
+  (box :class "system-info"
+       :orientation "h"
+       :space-evenly false
+       :spacing 6
+    (box :class "sys-item cpu"
+         :orientation "h"
+         :space-evenly false
+         :tooltip "CPU: ${cpu}%"
+      (label :class "sys-icon" :text "󰻠")
+      (label :class "sys-value" :text "${cpu}%"))
+    (box :class "sys-item ram"
+         :orientation "h"
+         :space-evenly false
+         :tooltip "RAM: ${ram}%"
+      (label :class "sys-icon" :text "󰍛")
+      (label :class "sys-value" :text "${ram}%"))
+    (box :class "sys-item temp"
+         :orientation "h"
+         :space-evenly false
+         :tooltip "Temp: ${temp}°C"
+      (label :class "sys-icon" :text "󰔏")
+      (label :class "sys-value" :text "${temp}°"))))
+
+;; Volume Widget (using tint2 scripts)
+(defwidget volume_widget []
+  (eventbox :onscroll "~/.config/tint2/executor/volume.sh {}"
+            :onclick "eww open --toggle volume_popup"
+            :onrightclick "~/.config/tint2/executor/volume.sh 0"
+    (box :class "volume"
+         :orientation "h"
+         :space-evenly false
+         :tooltip "Volume: ${volume}"
+      (label :class "vol-icon" :text volume_icon)
+      (label :class "vol-value" :text volume))))
+
+;; Network Widget (using tint2 scripts)
+(defwidget network []
+  (eventbox :onclick "eww open --toggle network_popup"
+    (box :class "network"
+         :orientation "h"
+         :space-evenly false
+         :tooltip network_status
+      (label :class "net-icon" :text network_icon)
+      (label :class "net-status" :text network_status))))
+
+;; Music Widget
+(defwidget music []
+  (box :class "music ${music_status == 'Playing' ? 'playing' : ''}"
+       :orientation "h"
+       :space-evenly false
+       :visible {music_title != ""}
+    (button :class "music-icon"
+            :onclick "playerctl play-pause"
+      music_icon)
+    (label :class "music-title"
+           :limit-width 30
+           :text music_title)))
+
+;; Temp Widget (standalone)
+(defwidget temp_widget []
+  (box :class "temp-widget"
+       :orientation "h"
+       :space-evenly false
+       :tooltip "Temperature: ${temp}°C"
+    (label :class "temp-icon" :text "")
+    (label :class "temp-value" :text "${temp}°")))
+
+;; Wallpaper Button
+(defwidget wallpaper_btn []
+  (button :class "action-btn wallpaper"
+          :onclick "~/.config/openbox/joyful-desktop/wallpaper-set.sh &"
+          :tooltip "Change Wallpaper"
+    ""))
+
+;; Screenshot Button
+(defwidget screenshot_btn []
+  (button :class "action-btn screenshot"
+          :onclick "~/.scripts/screenshot-screen.sh &"
+          :tooltip "Screenshot"
+    ""))
+
+;; Clipboard Button
+(defwidget clipboard []
+  (button :class "clipboard"
+          :onclick "~/.config/eww/scripts/clipboard &"
+          :tooltip "Clipboard History"
+    "󰅍"))
+
+;; Power Button
+(defwidget power []
+  (button :class "power"
+          :onclick "~/.config/rofi/scripts/rofi-exts.sh session &"
+          :tooltip "Power Menu"
+    "󰐥"))
+
+;; ============================================================================
+;; BAR LAYOUTS
+;; ============================================================================
+
+;; Left side of bar
+(defwidget bar_left []
+  (box :class "bar-left"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 6
+    (logo)
+    (workspaces_widget)
+    (layout)
+    (clipboard)
+    (systray_widget)))
+
+;; Center of bar
+(defwidget bar_center []
+  (box :class "bar-center"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+       :spacing 6
+    (music)))
+
+;; Right side of bar
+(defwidget bar_right []
+  (box :class "bar-right"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+       :spacing 6
+    (system_info)
+    (network)
+    (volume_widget)
+    (date_widget)
+    (clock)
+    (power)))
+
+;; Main bar widget
+(defwidget bar []
+  (centerbox :class "bar"
+             :orientation "h"
+    (bar_left)
+    (bar_center)
+    (bar_right)))
+
+;; ============================================================================
+;; WINDOWS
+;; ============================================================================
+
+;; Main Bar Window
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "4px"
+                      :width "99%"
+                      :height "26px"
+                      :anchor "top center")
+  :stacking "bottom"
+  :reserve (struts :distance "34px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+  (bar))
+
+;; ============================================================================
+;; VOLUME OSD
+;; ============================================================================
+
+(defvar volume_reveal false)
+
+(defwidget volume_osd []
+  (revealer :transition "slideup"
+            :reveal volume_reveal
+            :duration "300ms"
+    (box :class "osd volume-osd"
+         :orientation "v"
+         :space-evenly false
+      (label :class "osd-icon" :text volume_icon)
+      (scale :class "osd-slider"
+             :orientation "v"
+             :flipped true
+             :min 0
+             :max 101
+             :value volume)
+      (label :class "osd-value" :text "${volume}%"))))
+
+(defwindow volume_osd
+  :monitor 0
+  :geometry (geometry :x "20px"
+                      :y "0%"
+                      :width "60px"
+                      :height "200px"
+                      :anchor "center left")
+  :stacking "overlay"
+  :windowtype "dock"
+  :wm-ignore true
+  (volume_osd))
+
+;; ============================================================================
+;; CALENDAR POPUP
+;; ============================================================================
+
+(defvar calendar_reveal false)
+
+(defwidget calendar_popup []
+  (box :class "calendar-popup"
+       :orientation "v"
+       :space-evenly false
+    (box :class "calendar-header"
+         :orientation "h"
+         :space-evenly false
+      (label :class "calendar-title" :text date_full)
+      (box :hexpand true)
+      (button :class "popup-close" :onclick "eww close calendar" "󰅖"))
+    (calendar :class "calendar"
+              :show-heading true
+              :show-day-names true)))
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "8px"
+                      :width "300px"
+                      :height "200px"
+                      :anchor "top right")
+  :stacking "overlay"
+  :windowtype "dialog"
+  :wm-ignore true
+  :focusable true
+  (eventbox :onclick "eww close calendar"
+    (calendar_popup)))
+
+;; ============================================================================
+;; VOLUME POPUP
+;; ============================================================================
+
+(defwidget volume_popup_content []
+  (box :class "popup volume-popup"
+       :orientation "v"
+       :space-evenly false
+       :spacing 10
+    (box :class "popup-header"
+         :orientation "h"
+         :space-evenly false
+      (label :class "popup-title" :text "Volume")
+      (box :hexpand true)
+      (button :class "popup-close" :onclick "eww close volume_popup" "󰅖"))
+    (box :class "volume-control"
+         :orientation "h"
+         :space-evenly false
+         :spacing 10
+      (label :class "vol-popup-icon" :text volume_icon)
+      (scale :class "vol-slider"
+             :orientation "h"
+             :min 0
+             :max 100
+             :value {volume == "Muted" ? 0 : replace(volume, "%", "")}
+             :onchange "pamixer --set-volume {}")
+      (label :class "vol-popup-value" :text volume))
+    (box :class "volume-buttons"
+         :orientation "h"
+         :space-evenly true
+         :spacing 6
+      (button :class "vol-btn" :onclick "~/.config/tint2/executor/volume.sh 0" "󰝟 Mute")
+      (button :class "vol-btn" :onclick "pavucontrol &" "󰕾 Mixer"))))
+
+(defwindow volume_popup
+  :monitor 0
+  :geometry (geometry :x "-180px"
+                      :y "8px"
+                      :width "280px"
+                      :height "120px"
+                      :anchor "top right")
+  :stacking "overlay"
+  :windowtype "dialog"
+  :wm-ignore true
+  :focusable true
+  (volume_popup_content))
+
+;; ============================================================================
+;; NETWORK POPUP
+;; ============================================================================
+
+(defwidget network_popup_content []
+  (box :class "popup network-popup"
+       :orientation "v"
+       :space-evenly false
+       :spacing 10
+    (box :class "popup-header"
+         :orientation "h"
+         :space-evenly false
+      (label :class "popup-title" :text "Network")
+      (box :hexpand true)
+      (button :class "popup-close" :onclick "eww close network_popup" "󰅖"))
+    (box :class "network-info"
+         :orientation "h"
+         :space-evenly false
+         :spacing 10
+      (label :class "net-popup-icon" :text network_icon)
+      (label :class "net-popup-status" :text network_status))
+    (box :class "network-buttons"
+         :orientation "h"
+         :space-evenly true
+         :spacing 6
+      (button :class "net-btn" :onclick "nm-connection-editor &" "󰛳 Settings"))))
+
+(defwindow network_popup
+  :monitor 0
+  :geometry (geometry :x "-280px"
+                      :y "8px"
+                      :width "250px"
+                      :height "100px"
+                      :anchor "top right")
+  :stacking "overlay"
+  :windowtype "dialog"
+  :wm-ignore true
+  :focusable true
+  (network_popup_content))

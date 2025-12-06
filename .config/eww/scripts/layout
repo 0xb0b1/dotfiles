@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+LAYOUT_FILE="/tmp/xmonad-current-layout"
+
+# Layout icons (matching xmonad)
+declare -A ICONS=(
+    ["tall"]="󰯋"
+    ["wide"]="󰯌"
+    ["three"]="󰕴"
+    ["center"]="󰘸"
+    ["grid"]="󰕰"
+    ["spiral"]="󱗼"
+    ["tabbed"]="󰓩"
+    ["float"]="󰖲"
+    ["full"]="󰊓"
+)
+
+get_layout() {
+    if [[ -f "$LAYOUT_FILE" ]]; then
+        cat "$LAYOUT_FILE"
+    else
+        echo "tall"
+    fi
+}
+
+get_icon() {
+    local layout=$(get_layout)
+    echo "${ICONS[$layout]:-󰯋}"
+}
+
+case "$1" in
+    name)
+        get_layout
+        ;;
+    icon)
+        get_icon
+        ;;
+    *)
+        get_icon
+        ;;
+esac

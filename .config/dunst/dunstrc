@@ -1,0 +1,127 @@
+# Dunst Configuration - Catppuccin Frappe Theme
+
+[global]
+    # Display
+    monitor = 0
+    follow = mouse
+
+    # Geometry
+    width = (200, 400)
+    height = 150
+    origin = top-center
+    offset = 0x60
+    scale = 0
+    notification_limit = 5
+
+    # Progress bar
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 4
+
+    # Appearance
+    transparency = 0
+    separator_height = 3
+    padding = 16
+    horizontal_padding = 16
+    text_icon_padding = 16
+    frame_width = 2
+    frame_color = "#babbf1"
+    gap_size = 8
+    separator_color = frame
+    sort = yes
+
+    # Text
+    font = Vanilla Caramel 11
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = center
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    # Icons
+    enable_recursive_icon_lookup = true
+    icon_position = left
+    min_icon_size = 48
+    max_icon_size = 64
+    icon_path = /usr/share/icons/Papirus-Dark/48x48/status/:/usr/share/icons/Papirus-Dark/48x48/devices/:/usr/share/icons/Papirus-Dark/48x48/apps/
+
+    # History
+    sticky_history = yes
+    history_length = 20
+
+    # Misc
+    dmenu = /usr/bin/rofi -dmenu -p dunst
+    browser = /usr/bin/xdg-open
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 12
+    ignore_dbusclose = false
+
+    # Mouse
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[urgency_low]
+    background = "#303446"
+    foreground = "#c6d0f5"
+    frame_color = "#51576d"
+    highlight = "#babbf1"
+    timeout = 5
+    default_icon = dialog-information
+
+[urgency_normal]
+    background = "#303446"
+    foreground = "#c6d0f5"
+    frame_color = "#babbf1"
+    highlight = "#babbf1"
+    timeout = 8
+    default_icon = dialog-information
+
+[urgency_critical]
+    background = "#303446"
+    foreground = "#c6d0f5"
+    frame_color = "#e78284"
+    highlight = "#e78284"
+    timeout = 0
+    default_icon = dialog-warning
+
+# XMonad Layout Notifications - Clean minimal style
+[xmonad]
+    appname = xmonad
+    background = "#232634"
+    foreground = "#c6d0f5"
+    frame_color = "#ca9ee6"
+    format = "<span font='Vanilla Caramel Bold 16'>%s</span>"
+    alignment = center
+    icon_position = off
+    timeout = 1
+
+# Volume/Brightness notifications
+[volume]
+    appname = "volume"
+    background = "#303446"
+    foreground = "#c6d0f5"
+    frame_color = "#a6d189"
+    highlight = "#a6d189"
+    timeout = 2
+
+[brightness]
+    appname = "brightness"
+    background = "#303446"
+    foreground = "#c6d0f5"
+    frame_color = "#e5c890"
+    highlight = "#e5c890"
+    timeout = 2
+
+# vim: ft=cfg

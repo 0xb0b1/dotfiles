@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Trigger parcellite clipboard history using xdotool
+# Small delay to ensure eww button release is processed first
+sleep 0.1
+xdotool key ctrl+alt+h

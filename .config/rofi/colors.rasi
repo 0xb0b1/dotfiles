@@ -1,0 +1,79 @@
+// Catppuccin Frappe Color Scheme
+// https://github.com/catppuccin/catppuccin
+
+* {
+    // Base colors
+    background:                 rgba(48, 52, 70, 0.85);
+    background-light:           #414559;
+    background-focus:           #51576d;
+    background-alpha:           rgba(48, 52, 70, 0.9);
+    foreground-list:            #c6d0f5;
+
+    // Surface colors
+    surface:                    #303446;
+    surface-dim:                #292c3c;
+    surface-bright:             #414559;
+    surface-container:          #232634;
+    surface-container-high:     #414559;
+    surface-container-highest:  #51576d;
+
+    // Text colors
+    on-surface:                 #c6d0f5;
+    on-surface-variant:         #a5adce;
+    outline:                    #737994;
+    outline-variant:            #626880;
+
+    // Primary accent (Lavender)
+    primary:                    #babbf1;
+    primary-fixed:              #babbf1;
+    primary-fixed-dim:          #8caaee;
+    on-primary:                 #303446;
+    on-primary-fixed:           #232634;
+    on-primary-fixed-variant:   #414559;
+    primary-container:          #414559;
+    on-primary-container:       #babbf1;
+
+    // Secondary accent (Sapphire)
+    secondary:                  #85c1dc;
+    secondary-fixed:            #99d1db;
+    secondary-fixed-dim:        #85c1dc;
+    on-secondary:               #303446;
+    on-secondary-fixed:         #232634;
+    on-secondary-fixed-variant: #414559;
+    secondary-container:        #414559;
+    on-secondary-container:     #99d1db;
+
+    // Tertiary accent (Mauve)
+    tertiary:                   #ca9ee6;
+    tertiary-fixed:             #f4b8e4;
+    tertiary-fixed-dim:         #ca9ee6;
+    on-tertiary:                #303446;
+    on-tertiary-fixed:          #232634;
+    on-tertiary-fixed-variant:  #414559;
+    tertiary-container:         #414559;
+    on-tertiary-container:      #f4b8e4;
+
+    // Semantic colors
+    error:                      #e78284;
+    on-error:                   #303446;
+    error-container:            #ea999c;
+    on-error-container:         #232634;
+    urgent:                     #e78284;
+    on:                         #a6d189;
+
+    // Accent aliases
+    accent1:                    #babbf1;
+    accent2:                    #8caaee;
+
+    // Gradients
+    button-gradient:            linear-gradient(135deg, #babbf1, #8caaee);
+
+    // Shadows
+    shadow:                     #232634;
+    scrim:                      rgba(35, 38, 52, 0.5);
+
+    // Inverse colors
+    inverse-surface:            #c6d0f5;
+    inverse-on-surface:         #303446;
+    inverse-primary:            #8caaee;
+}

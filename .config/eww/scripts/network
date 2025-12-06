@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+get_icon() {
+    local wired=$(cat /sys/class/net/e*/operstate 2>/dev/null | grep -c "up")
+    local wireless=$(cat /sys/class/net/wl*/operstate 2>/dev/null | grep -c "up")
+
+    if [[ $wired -gt 0 ]]; then
+        echo "󰈀"
+    elif [[ $wireless -gt 0 ]]; then
+        echo "󰖩"
+    else
+        echo "󰖪"
+    fi
+}
+
+get_status() {
+    local wired_if=$(ls /sys/class/net/ | grep -E "^e" | head -1)
+    local wireless_if=$(ls /sys/class/net/ | grep -E "^wl" | head -1)
+
+    if [[ -n "$wired_if" ]] && [[ "$(cat /sys/class/net/$wired_if/operstate 2>/dev/null)" == "up" ]]; then
+        local ip=$(ip addr show $wired_if | grep "inet " | awk '{print $2}' | cut -d'/' -f1)
+        echo "Wired: $ip"
+    elif [[ -n "$wireless_if" ]] && [[ "$(cat /sys/class/net/$wireless_if/operstate 2>/dev/null)" == "up" ]]; then
+        local ssid=$(iwgetid -r 2>/dev/null)
+        local ip=$(ip addr show $wireless_if | grep "inet " | awk '{print $2}' | cut -d'/' -f1)
+        echo "WiFi: $ssid ($ip)"
+    else
+        echo "Disconnected"
+    fi
+}
+
+case "$1" in
+    icon)
+        get_icon
+        ;;
+    status)
+        get_status
+        ;;
+esac

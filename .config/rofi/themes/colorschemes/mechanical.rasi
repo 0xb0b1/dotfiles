@@ -1,0 +1,15 @@
+// Catppuccin Frappe Color Scheme
+* {
+  accent1:          #f9f9f9;
+  accent2:          #f9f9f9;
+  button-gradient:  linear-gradient(90deg, #babbf1, #8caaee);
+  background-alpha: rgba(48, 52, 70, 0.97);
+  background:       #303446;
+  background-light: #414559;
+  background-focus: #51576d;
+  foreground:       #c6d0f5;
+  foreground-list:  #c6d0f5;
+  on:               #a6d189;
+  off:              #e78284;
+  urgent:           #ef9f76;
+}

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Check if any window is in fullscreen mode
+# Returns "true" if fullscreen, "false" otherwise
+
+active_window=$(xdotool getactivewindow 2>/dev/null)
+
+if [ -n "$active_window" ]; then
+    # Check if window has _NET_WM_STATE_FULLSCREEN
+    state=$(xprop -id "$active_window" _NET_WM_STATE 2>/dev/null | grep -c "_NET_WM_STATE_FULLSCREEN")
+    if [ "$state" -gt 0 ]; then
+        echo "true"
+        exit 0
+    fi
+fi
+
+echo "false"

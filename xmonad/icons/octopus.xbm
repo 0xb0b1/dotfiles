@@ -1,0 +1,5 @@
+#define octopus_width 8
+#define octopus_height 8
+static unsigned char octopus_bits[] = {
+   0x3e, 0x2a, 0x3e, 0x3e, 0x7f, 0x55, 
+0xd5, 0x95};

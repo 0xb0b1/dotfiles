@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+get_title() {
+    local title=$(playerctl metadata title 2>/dev/null)
+    if [[ -n "$title" ]]; then
+        echo "$title"
+    else
+        echo ""
+    fi
+}
+
+get_artist() {
+    local artist=$(playerctl metadata artist 2>/dev/null)
+    if [[ -n "$artist" ]]; then
+        echo "$artist"
+    else
+        echo ""
+    fi
+}
+
+get_status() {
+    playerctl status 2>/dev/null || echo "Stopped"
+}
+
+get_icon() {
+    local status=$(playerctl status 2>/dev/null)
+    case "$status" in
+        Playing) echo "󰏤" ;;
+        Paused)  echo "󰐊" ;;
+        *)       echo "󰐊" ;;
+    esac
+}
+
+case "$1" in
+    title)
+        get_title
+        ;;
+    artist)
+        get_artist
+        ;;
+    status)
+        get_status
+        ;;
+    icon)
+        get_icon
+        ;;
+    toggle)
+        playerctl play-pause
+        ;;
+    next)
+        playerctl next
+        ;;
+    prev)
+        playerctl previous
+        ;;
+esac

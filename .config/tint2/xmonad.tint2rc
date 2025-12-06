@@ -1,0 +1,512 @@
+# XMonad tint2 configuration - Based on mechanical-top.interactive
+# Layout matching polybar: [menu][workspaces] | [date] | modules [tray][clock]
+
+#-------------------------------------
+# Backgrounds
+#-------------------------------------
+
+# Background 1: Panel
+rounded = 0
+border_width = 4
+border_sides = TBLR
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #24283B 100
+border_color = #1a1b26 100
+background_color_hover = #000000 0
+border_color_hover = #000000 0
+background_color_pressed = #000000 0
+border_color_pressed = #000000 0
+
+# Background 2: Active task, Clock, Executor, Systray (pill)
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #292d37 94
+border_color = #292d37 94
+background_color_hover = #32363D 94
+border_color_hover = #32363D 94
+background_color_pressed = #32363D 94
+border_color_pressed = #32363D 94
+
+# Background 3: Green accent
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #98C379 94
+border_color = #98C379 94
+background_color_hover = #98C379 94
+border_color_hover = #98C379 94
+background_color_pressed = #98C379 94
+border_color_pressed = #98C379 94
+
+# Background 4: Blue accent
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #62AEEF 94
+border_color = #62AEEF 94
+background_color_hover = #62AEEF 94
+border_color_hover = #62AEEF 94
+background_color_pressed = #62AEEF 94
+border_color_pressed = #62AEEF 94
+
+# Background 5: Magenta accent
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #C778DD 94
+border_color = #C778DD 94
+background_color_hover = #C778DD 94
+border_color_hover = #C778DD 94
+background_color_pressed = #C778DD 94
+border_color_pressed = #C778DD 94
+
+# Background 6: Yellow accent
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #E5C07A 94
+border_color = #E5C07A 94
+background_color_hover = #E5C07A 94
+border_color_hover = #E5C07A 94
+background_color_pressed = #E5C07A 94
+border_color_pressed = #E5C07A 94
+
+# Background 7: Cyan accent
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #55B6C2 94
+border_color = #55B6C2 94
+background_color_hover = #55B6C2 94
+border_color_hover = #55B6C2 94
+background_color_pressed = #55B6C2 94
+border_color_pressed = #55B6C2 94
+
+# Background 8: Red accent
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #E06B74 94
+border_color = #E06B74 94
+background_color_hover = #E06B74 94
+border_color_hover = #E06B74 94
+background_color_pressed = #E06B74 94
+border_color_pressed = #E06B74 94
+
+# Background 9: Tooltip
+rounded = 0
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #292d37 100
+border_color = #292d37 100
+background_color_hover = #000000 0
+border_color_hover = #000000 0
+background_color_pressed = #000000 0
+border_color_pressed = #000000 0
+
+# Background 10: Active workspace name (white pill)
+rounded = 11
+border_width = 0
+border_sides =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+background_color = #98C379 94
+border_color = #98C379 94
+background_color_hover = #98C379 78
+border_color_hover = #98C379 78
+background_color_pressed = #98C379 94
+border_color_pressed = #98C379 94
+
+#-------------------------------------
+# Panel
+#-------------------------------------
+# B=button T=taskbar E=executor P=separator C=clock S=systray
+# Left: Menu(B) Workspaces(T)
+# Center: Date(E)
+# Right: Net(B+E) Vol(B+E) Mem(B+E) CPU(B+E) Systray Clock
+panel_items = B:T:PP:E:PP:B:E:P:B:E:P:B:E:P:B:E:P:S:C:
+panel_size = 100% 30
+panel_margin = 0 0
+panel_padding = 0 0 0
+panel_background_id = 1
+wm_menu = 1
+panel_dock = 0
+panel_pivot_struts = 0
+panel_position = top center horizontal
+panel_layer = top
+panel_monitor = all
+panel_shrink = 0
+autohide = 0
+autohide_show_timeout = 0
+autohide_hide_timeout = 0.5
+autohide_height = 2
+strut_policy = follow_size
+panel_window_name = xmonad.tint2
+disable_transparency = 1
+mouse_effects = 1
+font_shadow = 0
+mouse_hover_icon_asb = 100 0 10
+mouse_pressed_icon_asb = 100 0 0
+scale_relative_to_dpi = 0
+scale_relative_to_screen_height = 0
+
+#-------------------------------------
+# Taskbar (workspaces)
+#-------------------------------------
+taskbar_mode = multi_desktop
+taskbar_hide_if_empty = 0
+taskbar_padding = 4 0 4
+taskbar_background_id = 2
+taskbar_active_background_id = 2
+taskbar_name = 1
+taskbar_hide_inactive_tasks = 1
+taskbar_hide_different_monitor = 0
+taskbar_hide_different_desktop = 1
+taskbar_always_show_all_desktop_tasks = 0
+taskbar_name_padding = 8 0
+taskbar_name_background_id = 0
+taskbar_name_active_background_id = 10
+taskbar_name_font = Vanilla Caramel Bold 10
+taskbar_name_font_color = #ABB2BF 100
+taskbar_name_active_font_color = #24283B 100
+taskbar_distribute_size = 0
+taskbar_sort_order = none
+task_align = left
+
+#-------------------------------------
+# Task (hidden - workspace names only)
+#-------------------------------------
+task_text = 0
+task_icon = 0
+task_centered = 1
+urgent_nb_of_blink = 100000
+task_maximum_size = 0 0
+task_padding = 0 0 0
+task_font = Vanilla Caramel 10
+task_tooltip = 0
+task_thumbnail = 0
+task_thumbnail_size = 0
+task_font_color = #ABB2BF 0
+task_active_font_color = #ABB2BF 0
+task_urgent_font_color = #E06B74 0
+task_background_id = 0
+task_active_background_id = 0
+task_urgent_background_id = 0
+mouse_left = none
+mouse_middle = none
+mouse_right = none
+mouse_scroll_up = none
+mouse_scroll_down = none
+
+#-------------------------------------
+# System tray
+#-------------------------------------
+systray_padding = 6 0 6
+systray_background_id = 2
+systray_sort = ascending
+systray_icon_size = 16
+systray_icon_asb = 100 0 10
+systray_monitor = 1
+systray_name_filter =
+
+#-------------------------------------
+# Clock
+#-------------------------------------
+time1_format = %H:%M
+time2_format =
+time1_font = Iosevka Bold 11
+time1_timezone =
+time2_timezone =
+clock_font_color = #ABB2BF 100
+clock_padding = 8 0
+clock_background_id = 2
+clock_tooltip = %A %d %B
+clock_tooltip_timezone =
+clock_lclick_command = gsimplecal
+clock_rclick_command =
+clock_mclick_command =
+clock_uwheel_command =
+clock_dwheel_command =
+
+#-------------------------------------
+# Separators
+#-------------------------------------
+separator = new
+separator_background_id = 0
+separator_color = #ABB2BF 0
+separator_style = empty
+separator_size = 6
+separator_padding = 0 0
+
+separator = new
+separator_background_id = 0
+separator_color = #ABB2BF 0
+separator_style = empty
+separator_size = 6
+separator_padding = 0 0
+
+separator = new
+separator_background_id = 0
+separator_color = #ABB2BF 0
+separator_style = empty
+separator_size = 6
+separator_padding = 0 0
+
+separator = new
+separator_background_id = 0
+separator_color = #ABB2BF 0
+separator_style = empty
+separator_size = 6
+separator_padding = 0 0
+
+separator = new
+separator_background_id = 0
+separator_color = #ABB2BF 0
+separator_style = empty
+separator_size = 6
+separator_padding = 0 0
+
+separator = new
+separator_background_id = 0
+separator_color = #ABB2BF 0
+separator_style = empty
+separator_size = 6
+separator_padding = 0 0
+
+#-------------------------------------
+# Button 1: Menu (LEFT)
+#-------------------------------------
+button = new
+button_text =
+button_tooltip = Menu
+button_lclick_command = ~/.config/rofi/scripts/rofi-main.sh
+button_rclick_command = ~/.config/bspwm/scripts/rofi_powermenu
+button_mclick_command =
+button_uwheel_command =
+button_dwheel_command =
+button_font = archcraft 12
+button_font_color = #24283B 100
+button_padding = 8 0
+button_background_id = 3
+button_centered = 1
+button_max_icon_size = 0
+
+#-------------------------------------
+# Button 2: Network icon (RIGHT)
+#-------------------------------------
+button = new
+button_text = 歷
+button_tooltip = Network
+button_lclick_command = nm-connection-editor
+button_rclick_command =
+button_mclick_command =
+button_uwheel_command =
+button_dwheel_command =
+button_font = Symbols Nerd Font 10
+button_font_color = #24283B 100
+button_padding = 5 0
+button_background_id = 5
+button_centered = 1
+button_max_icon_size = 0
+
+#-------------------------------------
+# Button 3: Volume icon (RIGHT)
+#-------------------------------------
+button = new
+button_text = 墳
+button_tooltip = Volume
+button_lclick_command = pamixer -t
+button_rclick_command = pavucontrol
+button_mclick_command =
+button_uwheel_command = pamixer -i 5
+button_dwheel_command = pamixer -d 5
+button_font = Symbols Nerd Font 10
+button_font_color = #24283B 100
+button_padding = 5 0
+button_background_id = 4
+button_centered = 1
+button_max_icon_size = 0
+
+#-------------------------------------
+# Button 4: Memory icon (RIGHT)
+#-------------------------------------
+button = new
+button_text =
+button_tooltip = Memory
+button_lclick_command = wezterm -e btop
+button_rclick_command =
+button_mclick_command =
+button_uwheel_command =
+button_dwheel_command =
+button_font = Symbols Nerd Font 10
+button_font_color = #24283B 100
+button_padding = 5 0
+button_background_id = 7
+button_centered = 1
+button_max_icon_size = 0
+
+#-------------------------------------
+# Button 5: CPU icon (RIGHT)
+#-------------------------------------
+button = new
+button_text =
+button_tooltip = CPU
+button_lclick_command = wezterm -e btop
+button_rclick_command =
+button_mclick_command =
+button_uwheel_command =
+button_dwheel_command =
+button_font = Symbols Nerd Font 10
+button_font_color = #24283B 100
+button_padding = 5 0
+button_background_id = 6
+button_centered = 1
+button_max_icon_size = 0
+
+#-------------------------------------
+# Executor 1: Date (CENTER)
+#-------------------------------------
+execp = new
+execp_command = date +" %a %b %d"
+execp_interval = 60
+execp_has_icon = 0
+execp_cache_icon = 0
+execp_continuous = 0
+execp_markup = 0
+execp_tooltip =
+execp_lclick_command = gsimplecal
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
+execp_font = Vanilla Caramel Bold 10
+execp_font_color = #ABB2BF 100
+execp_padding = 8 0
+execp_background_id = 2
+execp_centered = 1
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 2: Network status (RIGHT)
+#-------------------------------------
+execp = new
+execp_command = if ip link show enp7s0 2>/dev/null | grep -q "state UP"; then echo "Online"; else echo "Offline"; fi
+execp_interval = 5
+execp_has_icon = 0
+execp_cache_icon = 0
+execp_continuous = 0
+execp_markup = 0
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
+execp_font = Vanilla Caramel 10
+execp_font_color = #ABB2BF 100
+execp_padding = 6 0
+execp_background_id = 2
+execp_centered = 1
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 3: Volume percent (RIGHT)
+#-------------------------------------
+execp = new
+execp_command = VOL=$(pamixer --get-volume 2>/dev/null || echo "0"); MUTE=$(pamixer --get-mute 2>/dev/null); if [ "$MUTE" = "true" ]; then echo "Mute"; else echo "$VOL%"; fi
+execp_interval = 1
+execp_has_icon = 0
+execp_cache_icon = 0
+execp_continuous = 0
+execp_markup = 0
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command = pamixer -i 5
+execp_dwheel_command = pamixer -d 5
+execp_font = Vanilla Caramel 10
+execp_font_color = #ABB2BF 100
+execp_padding = 6 0
+execp_background_id = 2
+execp_centered = 1
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 4: Memory (RIGHT)
+#-------------------------------------
+execp = new
+execp_command = free -m | awk '/Mem:/ {print $3 "MB"}'
+execp_interval = 3
+execp_has_icon = 0
+execp_cache_icon = 0
+execp_continuous = 0
+execp_markup = 0
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
+execp_font = Vanilla Caramel 10
+execp_font_color = #ABB2BF 100
+execp_padding = 6 0
+execp_background_id = 2
+execp_centered = 1
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Executor 5: CPU (RIGHT)
+#-------------------------------------
+execp = new
+execp_command = top -bn1 | grep "Cpu(s)" | awk '{print int($2) "%"}'
+execp_interval = 2
+execp_has_icon = 0
+execp_cache_icon = 0
+execp_continuous = 0
+execp_markup = 0
+execp_tooltip =
+execp_lclick_command =
+execp_rclick_command =
+execp_mclick_command =
+execp_uwheel_command =
+execp_dwheel_command =
+execp_font = Vanilla Caramel 10
+execp_font_color = #ABB2BF 100
+execp_padding = 6 0
+execp_background_id = 2
+execp_centered = 1
+execp_icon_w = 0
+execp_icon_h = 0
+
+#-------------------------------------
+# Tooltip
+#-------------------------------------
+tooltip_show_timeout = 0.5
+tooltip_hide_timeout = 0.2
+tooltip_padding = 8 6
+tooltip_background_id = 9
+tooltip_font_color = #ABB2BF 100
+tooltip_font = Vanilla Caramel 9

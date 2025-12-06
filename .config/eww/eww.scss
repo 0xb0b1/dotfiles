@@ -1,0 +1,637 @@
+// ============================================================================
+// EWW Styles - Catppuccin Frappe Theme
+// ============================================================================
+
+// Catppuccin Frappe Colors
+$rosewater: #f2d5cf;
+$flamingo: #eebebe;
+$pink: #f4b8e4;
+$mauve: #ca9ee6;
+$red: #e78284;
+$maroon: #ea999c;
+$peach: #ef9f76;
+$yellow: #e5c890;
+$green: #a6d189;
+$teal: #81c8be;
+$sky: #99d1db;
+$sapphire: #85c1dc;
+$blue: #8caaee;
+$lavender: #babbf1;
+
+$text: #c6d0f5;
+$subtext1: #b5bfe2;
+$subtext0: #a5adce;
+$overlay2: #949cbb;
+$overlay1: #838ba7;
+$overlay0: #737994;
+$surface2: #626880;
+$surface1: #51576d;
+$surface0: #414559;
+$base: #303446;
+$mantle: #292c3c;
+$crust: #232634;
+
+// Variables
+$bar-bg: rgba($crust, 0.95);
+$widget-bg: rgba($surface0, 0.8);
+$widget-bg-hover: rgba($surface1, 0.9);
+$accent: $lavender;
+$accent-alt: $mauve;
+$font: "Vanilla Caramel";
+$font-mono: "JetBrainsMono Nerd Font";
+$font-icon: "Material Bold";
+$font-material: "Material";
+$border-radius: 12px;
+$transition: 200ms ease;
+
+// ============================================================================
+// GLOBAL STYLES
+// ============================================================================
+
+* {
+  all: unset;
+  font-family: $font;
+  font-size: 14px;
+}
+
+// ============================================================================
+// BAR
+// ============================================================================
+
+.bar {
+  background: $bar-bg;
+  border-radius: 8px;
+  margin: 2px 4px;
+  padding: 0 10px;
+}
+
+.bar-left,
+.bar-center,
+.bar-right {
+  background: transparent;
+}
+
+// ============================================================================
+// LOGO
+// ============================================================================
+
+.logo {
+  font-family: $font-mono;
+  font-size: 20px;
+  color: $blue;
+  padding: 0 6px;
+  border-radius: 6px;
+  transition: $transition;
+
+  &:hover {
+    background: $widget-bg;
+    color: $lavender;
+  }
+}
+
+// ============================================================================
+// WORKSPACES
+// ============================================================================
+
+.workspaces {
+  background: $widget-bg;
+  border-radius: 6px;
+  padding: 0 4px;
+  margin: 2px;
+
+  button {
+    font-family: $font-mono;
+    font-size: 18px;
+    color: $overlay1;
+    padding: 0 4px;
+    margin: 0 2px;
+    border-radius: 4px;
+    transition: $transition;
+
+    &:hover {
+      background: rgba($surface1, 0.6);
+      color: $text;
+    }
+
+    &.occupied {
+      color: $subtext0;
+    }
+
+    &.active {
+      background: $accent;
+      color: $crust;
+      font-weight: bold;
+    }
+
+    &.urgent {
+      background: $red;
+      color: $crust;
+    }
+  }
+}
+
+// ============================================================================
+// LAYOUT
+// ============================================================================
+
+.layout {
+  font-family: $font-mono;
+  font-size: 18px;
+  color: $mauve;
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+  transition: $transition;
+
+  &:hover {
+    background: $widget-bg-hover;
+    color: $pink;
+  }
+}
+
+// ============================================================================
+// CLOCK & DATE
+// ============================================================================
+
+.clock {
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+
+  .clock-icon {
+    font-family: $font-mono;
+    font-size: 16px;
+    color: $lavender;
+    margin-right: 6px;
+  }
+
+  .time {
+    font-family: $font;
+    font-size: 12px;
+    color: $text;
+  }
+}
+
+.date {
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+
+  .date-icon {
+    font-family: $font-mono;
+    font-size: 16px;
+    color: $lavender;
+    margin-right: 6px;
+  }
+
+  .date-text {
+    font-size: 12px;
+    color: $text;
+  }
+}
+
+// ============================================================================
+// SYSTEM INFO
+// ============================================================================
+
+.system-info {
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+
+  .sys-item {
+    margin: 0 4px;
+
+    .sys-icon {
+      font-family: $font-mono;
+      font-size: 22px;
+      margin-right: 4px;
+    }
+
+    .sys-value {
+      font-size: 12px;
+      color: $subtext0;
+    }
+
+    &.cpu .sys-icon {
+      color: $blue;
+    }
+
+    &.ram .sys-icon {
+      color: $green;
+    }
+
+    &.temp .sys-icon {
+      color: $peach;
+    }
+  }
+}
+
+// ============================================================================
+// SYSTEM TRAY
+// ============================================================================
+
+.systray {
+  background: $widget-bg;
+  padding: 0 8px;
+  border-radius: 6px;
+
+  .tray {
+    padding: 2px;
+  }
+}
+
+// ============================================================================
+// VOLUME
+// ============================================================================
+
+.volume {
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+  transition: $transition;
+
+  &:hover {
+    background: $widget-bg-hover;
+  }
+
+  .vol-icon {
+    font-family: $font-material;
+    font-size: 14px;
+    color: $sky;
+    margin-right: 6px;
+  }
+
+  .vol-value {
+    font-size: 12px;
+    color: $text;
+  }
+}
+
+// ============================================================================
+// NETWORK
+// ============================================================================
+
+.network {
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+
+  .net-icon {
+    font-family: $font-material;
+    font-size: 14px;
+    color: $green;
+    margin-right: 6px;
+  }
+
+  .net-status {
+    font-size: 12px;
+    color: $text;
+  }
+}
+
+// ============================================================================
+// MUSIC
+// ============================================================================
+
+.music {
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+  transition: $transition;
+
+  &.playing {
+    background: rgba($mauve, 0.2);
+    border: 1px solid rgba($mauve, 0.3);
+  }
+
+  .music-icon {
+    font-family: $font-mono;
+    font-size: 16px;
+    color: $mauve;
+    margin-right: 8px;
+    transition: $transition;
+
+    &:hover {
+      color: $pink;
+    }
+  }
+
+  .music-title {
+    font-size: 13px;
+    color: $text;
+  }
+}
+
+// ============================================================================
+// TEMP WIDGET
+// ============================================================================
+
+.temp-widget {
+  background: $widget-bg;
+  padding: 0 10px;
+  border-radius: 6px;
+
+  .temp-icon {
+    font-family: $font-mono;
+    font-size: 14px;
+    color: $peach;
+    margin-right: 4px;
+  }
+
+  .temp-value {
+    font-size: 12px;
+    color: $text;
+  }
+}
+
+// ============================================================================
+// ACTION BUTTONS
+// ============================================================================
+
+.clipboard {
+  font-family: $font-mono;
+  font-size: 16px;
+  background: $widget-bg;
+  padding: 0 8px;
+  border-radius: 6px;
+  color: $yellow;
+  transition: $transition;
+
+  &:hover {
+    background: rgba($yellow, 0.2);
+  }
+}
+
+.power {
+  font-family: $font-mono;
+  font-size: 16px;
+  background: $widget-bg;
+  padding: 0 8px;
+  border-radius: 6px;
+  color: $red;
+  transition: $transition;
+
+  &:hover {
+    background: rgba($red, 0.2);
+  }
+}
+
+// ============================================================================
+// VOLUME OSD
+// ============================================================================
+
+.osd {
+  background: $bar-bg;
+  border: 2px solid $surface0;
+  border-radius: $border-radius;
+  padding: 16px;
+}
+
+.volume-osd {
+  .osd-icon {
+    font-family: $font-mono;
+    font-size: 24px;
+    color: $sky;
+    margin-bottom: 12px;
+  }
+
+  .osd-slider {
+    min-height: 100px;
+
+    trough {
+      background: $surface0;
+      border-radius: 4px;
+      min-width: 8px;
+    }
+
+    highlight {
+      background: linear-gradient(to top, $blue, $lavender);
+      border-radius: 4px;
+    }
+
+    slider {
+      background: $text;
+      border-radius: 50%;
+      min-width: 12px;
+      min-height: 12px;
+    }
+  }
+
+  .osd-value {
+    font-size: 12px;
+    color: $subtext0;
+    margin-top: 8px;
+  }
+}
+
+// ============================================================================
+// CALENDAR
+// ============================================================================
+
+.calendar-popup {
+  background: $bar-bg;
+  border: 2px solid $surface0;
+  border-radius: $border-radius;
+  padding: 16px;
+}
+
+.calendar-header {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid $surface0;
+
+  .calendar-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: $text;
+  }
+}
+
+.calendar {
+  font-size: 12px;
+  color: $text;
+
+  &.header {
+    color: $accent;
+    font-weight: bold;
+  }
+
+  &.button {
+    color: $overlay1;
+
+    &:hover {
+      background: $widget-bg;
+      color: $text;
+    }
+  }
+
+  &:selected {
+    background: $accent;
+    color: $crust;
+    border-radius: 50%;
+  }
+
+  &:indeterminate {
+    color: $overlay0;
+  }
+}
+
+// ============================================================================
+// TOOLTIP
+// ============================================================================
+
+tooltip {
+  background: $mantle;
+  border: 1px solid $surface0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: $text;
+}
+
+// ============================================================================
+// POPUPS
+// ============================================================================
+
+.popup {
+  background: $bar-bg;
+  border: 2px solid $surface0;
+  border-radius: $border-radius;
+  padding: 16px;
+
+  .popup-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $surface0;
+
+    .popup-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: $text;
+    }
+
+    .popup-close {
+      font-family: $font-mono;
+      font-size: 14px;
+      color: $overlay1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: $transition;
+
+      &:hover {
+        background: rgba($red, 0.2);
+        color: $red;
+      }
+    }
+  }
+}
+
+.calendar-popup {
+  .calendar-header {
+    .popup-close {
+      font-family: $font-mono;
+      font-size: 14px;
+      color: $overlay1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: $transition;
+
+      &:hover {
+        background: rgba($red, 0.2);
+        color: $red;
+      }
+    }
+  }
+}
+
+// Volume Popup
+.volume-popup {
+  .volume-control {
+    .vol-popup-icon {
+      font-family: $font-material;
+      font-size: 20px;
+      color: $sky;
+    }
+
+    .vol-slider {
+      min-width: 150px;
+
+      trough {
+        background: $surface0;
+        border-radius: 4px;
+        min-height: 8px;
+      }
+
+      highlight {
+        background: linear-gradient(to right, $blue, $lavender);
+        border-radius: 4px;
+      }
+
+      slider {
+        background: $text;
+        border-radius: 50%;
+        min-width: 14px;
+        min-height: 14px;
+      }
+    }
+
+    .vol-popup-value {
+      font-size: 12px;
+      color: $subtext0;
+      min-width: 40px;
+    }
+  }
+
+  .volume-buttons {
+    margin-top: 10px;
+
+    .vol-btn {
+      font-family: $font-mono;
+      font-size: 11px;
+      background: $widget-bg;
+      color: $text;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: $transition;
+
+      &:hover {
+        background: $widget-bg-hover;
+      }
+    }
+  }
+}
+
+// Network Popup
+.network-popup {
+  .network-info {
+    .net-popup-icon {
+      font-family: $font-material;
+      font-size: 24px;
+      color: $green;
+    }
+
+    .net-popup-status {
+      font-size: 12px;
+      color: $text;
+    }
+  }
+
+  .network-buttons {
+    margin-top: 10px;
+
+    .net-btn {
+      font-family: $font-mono;
+      font-size: 11px;
+      background: $widget-bg;
+      color: $text;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: $transition;
+
+      &:hover {
+        background: $widget-bg-hover;
+      }
+    }
+  }
+}

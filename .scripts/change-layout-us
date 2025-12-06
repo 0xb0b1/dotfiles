@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+setxkbmap -layout us
+
+dunstify \
+    -a "xmonad" \
+    -h string:x-canonical-private-synchronous:keyboard-layout \
+    -u normal \
+    -t 1000 \
+    "󰌌  US"

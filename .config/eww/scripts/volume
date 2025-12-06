@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+get_volume() {
+    pamixer --get-volume
+}
+
+get_icon() {
+    local vol=$(pamixer --get-volume)
+    local muted=$(pamixer --get-mute)
+
+    if [[ "$muted" == "true" ]]; then
+        echo "󰝟"
+    elif [[ $vol -eq 0 ]]; then
+        echo "󰕿"
+    elif [[ $vol -lt 30 ]]; then
+        echo "󰖀"
+    elif [[ $vol -lt 70 ]]; then
+        echo "󰕾"
+    else
+        echo "󰕾"
+    fi
+}
+
+case "$1" in
+    get)
+        get_volume
+        ;;
+    icon)
+        get_icon
+        ;;
+    up)
+        pamixer -i 5
+        ;;
+    down)
+        pamixer -d 5
+        ;;
+    toggle)
+        pamixer -t
+        ;;
+    *)
+        # Scroll events
+        if [[ "$1" == "up" ]]; then
+            pamixer -i 5
+        elif [[ "$1" == "down" ]]; then
+            pamixer -d 5
+        fi
+        ;;
+esac

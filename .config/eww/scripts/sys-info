@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+case "$1" in
+    cpu)
+        result=$(top -bn1 | grep "Cpu(s)" | awk '{print int($2)}' 2>/dev/null)
+        echo "${result:-0}"
+        ;;
+    ram)
+        result=$(free | grep Mem | awk '{print int($3/$2 * 100)}' 2>/dev/null)
+        echo "${result:-0}"
+        ;;
+    disk)
+        result=$(df -h / | awk 'NR==2 {gsub("%",""); print $5}' 2>/dev/null)
+        echo "${result:-0}"
+        ;;
+    temp)
+        # Try different temperature sources
+        if [[ -f /sys/class/thermal/thermal_zone0/temp ]]; then
+            echo $(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))
+        elif command -v sensors &>/dev/null; then
+            result=$(sensors | grep -oP 'Core 0.*?\+\K[0-9]+' | head -1)
+            echo "${result:-0}"
+        else
+            echo "0"
+        fi
+        ;;
+    *)
+        echo "0"
+        ;;
+esac
