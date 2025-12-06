@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+
+# Custom fetch script with Catppuccin Frappe colors
+# Author: Vicente
+
+# Catppuccin Frappe colors
+c0='\e[0m'        # Reset
+c1='\e[38;5;183m' # Lavender
+c2='\e[38;5;117m' # Blue
+c3='\e[38;5;149m' # Green
+c4='\e[38;5;223m' # Yellow
+c5='\e[38;5;210m' # Red/Peach
+c6='\e[38;5;182m' # Pink
+c7='\e[38;5;252m' # Text
+c8='\e[38;5;243m' # Overlay
+bold='\e[1m'
+
+# Get system info
+get_os() {
+    if [[ -f /etc/os-release ]]; then
+        source /etc/os-release
+        echo "${PRETTY_NAME:-$NAME}"
+    else
+        uname -o
+    fi
+}
+
+get_kernel() {
+    uname -r
+}
+
+get_uptime() {
+    uptime -p | sed 's/up //'
+}
+
+get_packages() {
+    if command -v pacman &>/dev/null; then
+        pacman -Q | wc -l
+    elif command -v dpkg &>/dev/null; then
+        dpkg --list | wc -l
+    elif command -v rpm &>/dev/null; then
+        rpm -qa | wc -l
+    else
+        echo "N/A"
+    fi
+}
+
+get_shell() {
+    basename "$SHELL"
+}
+
+get_wm() {
+    if [[ -n "$DESKTOP_SESSION" ]]; then
+        echo "$DESKTOP_SESSION"
+    elif [[ -n "$XDG_CURRENT_DESKTOP" ]]; then
+        echo "$XDG_CURRENT_DESKTOP"
+    else
+        # Try to detect from process
+        wmctrl -m 2>/dev/null | grep "Name:" | cut -d: -f2 | tr -d ' ' || echo "xmonad"
+    fi
+}
+
+get_terminal() {
+    # Get parent process name
+    local term=""
+    if [[ -n "$TERM_PROGRAM" ]]; then
+        term="$TERM_PROGRAM"
+    elif [[ -n "$TERMINAL" ]]; then
+        term="$TERMINAL"
+    else
+        term=$(ps -o comm= -p "$PPID" 2>/dev/null)
+    fi
+    echo "${term:-unknown}"
+}
+
+get_cpu() {
+    grep "model name" /proc/cpuinfo | head -1 | cut -d: -f2 | sed 's/^ *//' | sed 's/(R)//g' | sed 's/(TM)//g' | cut -d@ -f1
+}
+
+get_memory() {
+    local total used
+    total=$(free -m | awk '/^Mem:/ {print $2}')
+    used=$(free -m | awk '/^Mem:/ {print $3}')
+    echo "${used}MiB / ${total}MiB"
+}
+
+get_gpu() {
+    if command -v lspci &>/dev/null; then
+        lspci | grep -i vga | cut -d: -f3 | sed 's/^ *//' | head -1 | cut -c1-40
+    else
+        echo "N/A"
+    fi
+}
+
+get_resolution() {
+    if command -v xrandr &>/dev/null; then
+        xrandr 2>/dev/null | grep '\*' | awk '{print $1}' | head -1
+    else
+        echo "N/A"
+    fi
+}
+
+get_disk() {
+    df -h / | awk 'NR==2 {print $3 " / " $2 " (" $5 ")"}'
+}
+
+# System info
+os=$(get_os)
+kernel=$(get_kernel)
+uptime=$(get_uptime)
+packages=$(get_packages)
+shell=$(get_shell)
+wm=$(get_wm)
+terminal=$(get_terminal)
+cpu=$(get_cpu)
+memory=$(get_memory)
+gpu=$(get_gpu)
+resolution=$(get_resolution)
+disk=$(get_disk)
+user="${USER}@$(hostname)"
+
+# Print
+echo
+printf "${c2}${bold}"
+cat << 'EOF'
+                   ▄
+                  ▟█▙
+                 ▟███▙
+                ▟█████▙
+               ▟███████▙
+              ▂▔▀▜██████▙
+             ▟██▅▂▝▜█████▙
+            ▟█████████████▙
+           ▟███████████████▙
+          ▟█████████████████▙
+         ▟███████████████████▙
+        ▟█████████▛▀▀▜████████▙
+       ▟████████▛      ▜███████▙
+      ▟█████████        ████████▙
+     ▟██████████        █████▀▀▀▀
+    ▟███████████        ▜████▄
+   ▟████████████         ▜█████▄
+EOF
+printf "${c0}"
+echo
+
+# Move cursor up and print info on the right
+tput cuu 17
+tput cuf 38
+
+printf "${c1}${bold}%s${c0}\n" "$user"
+tput cuf 38
+printf "${c8}%s${c0}\n" "────────────────────────"
+tput cuf 38
+printf "${c2}${bold}os${c0}       ${c7}%s${c0}\n" "$os"
+tput cuf 38
+printf "${c3}${bold}kernel${c0}   ${c7}%s${c0}\n" "$kernel"
+tput cuf 38
+printf "${c4}${bold}uptime${c0}   ${c7}%s${c0}\n" "$uptime"
+tput cuf 38
+printf "${c5}${bold}pkgs${c0}     ${c7}%s${c0}\n" "$packages"
+tput cuf 38
+printf "${c6}${bold}shell${c0}    ${c7}%s${c0}\n" "$shell"
+tput cuf 38
+printf "${c1}${bold}wm${c0}       ${c7}%s${c0}\n" "$wm"
+tput cuf 38
+printf "${c2}${bold}term${c0}     ${c7}%s${c0}\n" "$terminal"
+tput cuf 38
+printf "${c3}${bold}cpu${c0}      ${c7}%s${c0}\n" "$cpu"
+tput cuf 38
+printf "${c4}${bold}gpu${c0}      ${c7}%s${c0}\n" "$gpu"
+tput cuf 38
+printf "${c5}${bold}memory${c0}   ${c7}%s${c0}\n" "$memory"
+tput cuf 38
+printf "${c6}${bold}disk${c0}     ${c7}%s${c0}\n" "$disk"
+tput cuf 38
+printf "${c1}${bold}res${c0}      ${c7}%s${c0}\n" "$resolution"
+tput cuf 38
+echo
+tput cuf 38
+printf "  ${c1}●${c2}●${c3}●${c4}●${c5}●${c6}●${c7}●${c8}●${c0}\n"
+
+# Move cursor down to clear
+tput cud 3
+echo

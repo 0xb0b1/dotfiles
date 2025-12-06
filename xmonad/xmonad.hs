@@ -208,8 +208,10 @@ getLayoutName = do
     return $ description . W.layout . W.workspace . W.current $ ws
 
 -- Switch to next layout and show notification
+-- Also sinks floating windows back to tiled
 switchLayoutWithNotify :: X ()
 switchLayoutWithNotify = do
+    withFocused $ windows . W.sink  -- Sink floating window first
     sendMessage NextLayout
     layoutName <- getLayoutName
     spawn $ "~/.xmonad/layout-osd.sh '" ++ layoutName ++ "'"
@@ -229,9 +231,6 @@ myKeys =
     -- Applications (matching sxhkd style)
     [ ((mod4Mask,               xK_Return), spawn "wezterm")
     , ((mod4Mask .|. shiftMask, xK_Return), spawn "wezterm --class floating")
-    , ((mod4Mask,               xK_a),      spawn "brave")
-    , ((mod4Mask,               xK_c),      spawn "wezterm -e nvim")
-    , ((mod4Mask,               xK_f),      spawn "wezterm -e ranger")
     , ((mod4Mask .|. controlMask, xK_t),    spawn "$HOME/Telegram/Telegram")
     , ((mod4Mask .|. shiftMask, xK_f),      spawn "thunar")
 
