@@ -1,33 +1,23 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      -- Enhanced Python setup
-      opts.servers = opts.servers or {}
-      opts.servers.pyright = vim.tbl_deep_extend("force", opts.servers.pyright or {}, {
-        settings = {
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = "workspace",
-            },
-          },
-        },
-      })
-      return opts
-    end,
-  },
-  {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
-      "nvim-telescope/telescope.nvim",
       "mfussenegger/nvim-dap-python",
     },
     opts = {
-      anaconda_base_path = "~/anaconda3",
-      anaconda_envs_path = "~/anaconda3/envs",
+      settings = {
+        search = {
+          anaconda_base = {
+            command = "fd python$ ~/anaconda3/bin --full-path --color never -E __pycache__",
+            type = "anaconda",
+          },
+          anaconda_envs = {
+            command = "fd python$ ~/anaconda3/envs --full-path --color never -E __pycache__",
+            type = "anaconda",
+          },
+        },
+      },
     },
     cmd = { "VenvSelect", "VenvSelectCached" },
     keys = {

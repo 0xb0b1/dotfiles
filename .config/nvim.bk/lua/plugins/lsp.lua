@@ -2,16 +2,12 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      -- Python: Pyright with workspace diagnostics
       pyright = {
         settings = {
           python = {
             analysis = {
               typeCheckingMode = "basic",
               autoImportCompletions = true,
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = "workspace",
               diagnosticSeverityOverrides = {
                 reportUnusedImport = "warning",
                 reportUnusedVariable = "warning",
@@ -20,30 +16,15 @@ return {
           },
         },
       },
-      -- TypeScript/JavaScript: vtsls with inlay hints and auto-imports
       vtsls = {
         settings = {
           typescript = {
-            updateImportsOnFileMove = { enabled = "always" },
-            suggest = { completeFunctionCalls = true },
-            preferences = {
-              importModuleSpecifier = "relative",
-              importModuleSpecifierEnding = "auto",
-            },
             inlayHints = {
               parameterNames = { enabled = "all" },
               parameterTypes = { enabled = true },
               variableTypes = { enabled = true },
               propertyDeclarationTypes = { enabled = true },
               functionLikeReturnTypes = { enabled = true },
-            },
-          },
-          javascript = {
-            updateImportsOnFileMove = { enabled = "always" },
-            suggest = { completeFunctionCalls = true },
-            preferences = {
-              importModuleSpecifier = "relative",
-              importModuleSpecifierEnding = "auto",
             },
           },
         },
@@ -86,6 +67,15 @@ return {
         },
       },
 
+      tsserver = {
+        settings = {
+          typescript = {
+            format = {
+              semicolons = "insert",
+            },
+          },
+        },
+      },
     },
   },
 }
